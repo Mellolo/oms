@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="codetest" />
+        <module name="eurekaserver" />
+        <module name="eventbus" />
+        <module name="omsstrategybiz" />
+        <module name="omsstrategygateway" />
+        <module name="omstradebiz" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="codetest" target="1.8" />
+      <module name="eurekaserver" target="1.8" />
+      <module name="eventbus" target="1.8" />
+      <module name="oms" target="1.8" />
+      <module name="omsstrategybiz" target="1.8" />
+      <module name="omsstrategygateway" target="1.8" />
+      <module name="omstradebiz" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="codetest" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
+      <module name="eventbus" options="-parameters" />
+      <module name="oms" options="-parameters" />
+      <module name="omsstrategybiz" options="-parameters" />
+      <module name="omsstrategygateway" options="-parameters" />
+      <module name="omstradebiz" options="-parameters" />
+    </option>
+  </component>
+</project>

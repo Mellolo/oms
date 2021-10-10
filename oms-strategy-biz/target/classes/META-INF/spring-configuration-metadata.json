@@ -1,0 +1,60 @@
+{
+  "groups": [
+    {
+      "name": "elasticsearch",
+      "type": "com.hengtiansoft.strategy.config.EsProperties",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "elasticsearch.connect-time-out",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": 1000
+    },
+    {
+      "name": "elasticsearch.connection-request-time-out",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": 500
+    },
+    {
+      "name": "elasticsearch.hosts",
+      "type": "java.lang.String",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": "127.0.0.1"
+    },
+    {
+      "name": "elasticsearch.max-connect-num",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": 100
+    },
+    {
+      "name": "elasticsearch.max-connect-per-route",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": 100
+    },
+    {
+      "name": "elasticsearch.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": 9200
+    },
+    {
+      "name": "elasticsearch.protocol",
+      "type": "java.lang.String",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": "http"
+    },
+    {
+      "name": "elasticsearch.socket-time-out",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
+      "defaultValue": 30000
+    }
+  ],
+  "hints": []
+}

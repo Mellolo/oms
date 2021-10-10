@@ -1,0 +1,20 @@
+server:
+  port: 12345
+
+spring:
+  application:
+    name: register-center
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+  level:
+    com.netflix.eureka: off
+    com.netflix.discovery: off
