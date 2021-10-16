@@ -4,6 +4,11 @@
       "name": "elasticsearch",
       "type": "com.hengtiansoft.strategy.config.EsProperties",
       "sourceType": "com.hengtiansoft.strategy.config.EsProperties"
+    },
+    {
+      "name": "py4j",
+      "type": "com.hengtiansoft.strategy.config.GatewayProperties",
+      "sourceType": "com.hengtiansoft.strategy.config.GatewayProperties"
     }
   ],
   "properties": [
@@ -54,6 +59,12 @@
       "type": "java.lang.Integer",
       "sourceType": "com.hengtiansoft.strategy.config.EsProperties",
       "defaultValue": 30000
+    },
+    {
+      "name": "py4j.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.GatewayProperties",
+      "defaultValue": 25333
     }
   ],
   "hints": []

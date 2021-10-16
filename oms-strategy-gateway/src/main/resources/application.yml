@@ -9,7 +9,7 @@ eureka:
 
 spring:
   application:
-    name: CLOUD-GATEWAY-SERVICE
+    name: gateway-service
 
 management:
   endpoints:
@@ -22,12 +22,9 @@ management:
 
 zuul:
   routes:
-    ribbon:
-      path: /ribbon/**
-      service-id: SPRING-CLIENT-02
-    feign:
-      path: /feign/**
-      service-id: SPRING-FEIGN-SERVICE
-    client:
-      path: /three/**
-      service-id: SPRING-CLIENT-03
+    strategy:
+      path: /strategy/**
+      service-id: oms-strategy-biz
+    trade:
+      path: /trade/**
+      service-id: oms-trade-biz

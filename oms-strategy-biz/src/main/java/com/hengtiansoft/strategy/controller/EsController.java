@@ -12,7 +12,7 @@ import py4j.GatewayServer;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+//@RestController
 public class EsController {
 
     @Autowired

@@ -12,6 +12,7 @@
         <module name="eventbus" />
         <module name="omsstrategybiz" />
         <module name="omsstrategygateway" />
+        <module name="omsstrategyloadbalance" />
         <module name="omstradebiz" />
       </profile>
     </annotationProcessing>
@@ -22,6 +23,7 @@
       <module name="oms" target="1.8" />
       <module name="omsstrategybiz" target="1.8" />
       <module name="omsstrategygateway" target="1.8" />
+      <module name="omsstrategyloadbalance" target="1.8" />
       <module name="omstradebiz" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -33,6 +35,7 @@
       <module name="oms" options="-parameters" />
       <module name="omsstrategybiz" options="-parameters" />
       <module name="omsstrategygateway" options="-parameters" />
+      <module name="omsstrategyloadbalance" options="-parameters" />
       <module name="omstradebiz" options="-parameters" />
     </option>
   </component>

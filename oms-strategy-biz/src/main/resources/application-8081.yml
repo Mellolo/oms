@@ -1,0 +1,19 @@
+elasticsearch:
+  hosts: 192.168.29.131
+  port: 9200
+  protocol: http
+
+spring:
+  application:
+    name: oms-strategy-biz
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:12345/eureka/
+
+py4j:
+  port: 25334

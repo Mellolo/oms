@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb938665-b47b-489a-9419-7a2d98a0cf01" name="Default Changelist" comment="" />
+    <list default="true" id="cb938665-b47b-489a-9419-7a2d98a0cf01" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/GatewayAutoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/GatewayProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application-8081.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/Router/DynamicRouter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/config/DynamicRouteConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/config/DynamicRouteProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/omsstrategyloadbalance.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/LoadBalanceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/config/LoadBalancerRuleConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/controller/LoadBalanceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/feign/StrategyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/util/StrategyUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/feign/StrategyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/ctl.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/ctl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/EsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/EsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/dao/EsTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/dao/EsTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/py4jserver/EntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/entrypoint/EntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/py4jserver/GatewayServerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/blind/RunningStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/blind/RunningStrategy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/blind/ctl.class" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/blind/ctl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/controller/EsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/controller/EsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/dao/EsTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/dao/EsTemplate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/py4jserver/EntryPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/com/hengtiansoft/strategy/py4jserver/GatewayServerConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-gateway/omsstrategygateway.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-gateway/omsstrategygateway.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/LoadBalancer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-gateway/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-strategy-gateway/target/classes/com/hengtiansoft/strategy/gateway/GatewayApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-gateway/target/classes/com/hengtiansoft/strategy/gateway/GatewayApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-trade-biz/omstradebiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/omstradebiz.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-trade-biz/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/TradeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/TradeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-trade-biz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-trade-biz/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oms-trade-biz/target/classes/com/hengtiansoft/trade/TradeApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/target/classes/com/hengtiansoft/trade/TradeApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/oms.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/oms.kotlin_module" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/eureka-server/target/" />
@@ -10,6 +62,8 @@
     <ignored path="$PROJECT_DIR$/oms-trade-biz/target/" />
     <ignored path="$PROJECT_DIR$/oms-strategy-gateway/target/" />
     <ignored path="$PROJECT_DIR$/code-test/target/" />
+    <ignored path="$PROJECT_DIR$/oms-strategy-facade/target/" />
+    <ignored path="$PROJECT_DIR$/oms-strategy-loadbalance/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,49 +73,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/RunningStrategy.java">
+        <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/config/LoadBalancerRuleConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/GatewayApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="760">
+              <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#442#443#0" expanded="true" />
-                <element signature="e#511#512#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/LoadBalancer.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/30.1.1-jre/guava-30.1.1-jre-sources.jar!/com/google/common/hash/Hashing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="129">
+              <caret line="492" column="13" selection-start-line="492" selection-start-column="13" selection-end-line="492" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/controller/LoadBalanceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="20" column="57" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1830#1831#0" expanded="true" />
-                <element signature="e#1883#1884#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StrategyPython/handleTick.py">
+        <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/util/StrategyUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="152">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#203#204#0" expanded="true" />
+                <element signature="e#248#249#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,10 +131,17 @@
     <findStrings>
       <find>RouteLocator</find>
       <find>getMatchingRoute</find>
-      <find>RouteLocator</find>
+      <find>GatewayServer</find>
+      <find>getOb</find>
+      <find>getlo</find>
+      <find>IRule</find>
+      <find>ribbonRule</find>
+      <find>ribbonRule(</find>
+      <find>RoundRobinRule</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -92,20 +150,54 @@
         <option value="$PROJECT_DIR$/eureka-server/src/main/java/java/com/hengtiansoft/eventbus/EventBus.java" />
         <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/eventbus/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/oms-strategy-biz/pom.xml" />
-        <option value="$PROJECT_DIR$/oms-trade-biz/pom.xml" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/strategy/Accounts.java" />
         <option value="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TradeServiceController.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/feign/TradeService.java" />
-        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/ctl.java" />
-        <option value="$PROJECT_DIR$/oms-strategy-gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/GatewayApplication.java" />
-        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/StrategyPython/handleTick.py" />
         <option value="$PROJECT_DIR$/code-test/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/RunningStrategy.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/GatewayApplication.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/dao/EsTemplate.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/EsAutoConfiguration.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/py4jserver/EntryPoint.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/EsController.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/py4jserver/GatewayServerConfig.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/GatewayProperties.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application-8081.yml" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/GatewayAutoConfiguration.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/entrypoint/EntryPoint.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/LoadBalancer.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/pom.xml" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/DynamicRouteProperties.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/DynamicRouteConfig.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/Router/DynamicRouteLocator.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/config/DynamicRouteConfig.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/Router/DynamicRouter.java" />
+        <option value="$PROJECT_DIR$/oms-trade-biz/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/oms-strategy-facade/pom.xml" />
+        <option value="$PROJECT_DIR$/oms-strategy-facade/src/main/java/com/hengtiansoft/strategyfacade/FacadeApplication.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-facade/src/main/java/com/hengtiansoft/strategyfacade/controller/FacadeController.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/ctl.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-facade/src/main/java/com/hengtiansoft/strategyfacade/feign/StrategyService.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/controller/FacadeController.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/FacadeApplication.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/feign/StrategyService.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/config/TestConfiguration.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/config/LoadBalanceRuleConfiguration.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/pom.xml" />
+        <option value="$PROJECT_DIR$/oms-trade-biz/pom.xml" />
+        <option value="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/TradeApplication.java" />
+        <option value="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/feign/StrategyService.java" />
+        <option value="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TestController.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/util/StrategyUtil.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/controller/LoadBalanceController.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/config/LoadBalancerRuleConfiguration.java" />
       </list>
     </option>
   </component>
@@ -117,8 +209,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="5" />
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
     <option name="width" value="1350" />
     <option name="height" value="690" />
   </component>
@@ -128,7 +220,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -137,21 +228,71 @@
               <item name="oms" type="b2602c69:ProjectViewProjectNode" />
               <item name="oms" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oms" type="462c0819:PsiDirectoryNode" />
+              <item name="oms-strategy-gateway" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oms" type="462c0819:PsiDirectoryNode" />
+              <item name="oms-strategy-gateway" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oms" type="462c0819:PsiDirectoryNode" />
+              <item name="oms-strategy-gateway" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.netflix.ribbon:ribbon-httpclient:2.3.0" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.netflix.ribbon:ribbon-httpclient:2.3.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="ribbon-httpclient-2.3.0.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.netflix.ribbon:ribbon-httpclient:2.3.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="ribbon-httpclient-2.3.0.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="netflix" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.netflix.ribbon:ribbon-httpclient:2.3.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="ribbon-httpclient-2.3.0.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="netflix" type="462c0819:PsiDirectoryNode" />
+              <item name="loadbalancer" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1633854156740" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1634311036831" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Git/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -160,12 +301,19 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hengtiansoft.trade.feign" />
+      <recent name="com.hengtiansoft.trade.controller" />
+      <recent name="com.hengtiansoft.strategyfacade.controller" />
+      <recent name="com.hengtiansoft.strategyfacade.feign" />
+      <recent name="com.hengtiansoft.strategyfacade" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\oms\oms-strategy-loadbalance\src\main\resources" />
+      <recent name="D:\oms\oms-strategy-biz\src\main\resources" />
       <recent name="F:\jworkplace\oms\oms-strategy-biz" />
       <recent name="F:\jworkplace\oms\oms-trade-biz" />
       <recent name="F:\jworkplace\oms" />
-      <recent name="F:\jworkplace\oms\eventbus" />
-      <recent name="F:\jworkplace\oms\eureka-server\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -184,9 +332,9 @@
         </RuleState>
       </list>
     </option>
-    <option name="contentProportion" value="0.19196866" />
+    <option name="contentProportion" value="0.28370553" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Spring Boot.LoadBalanceApplication">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="codetest" />
@@ -211,11 +359,19 @@
       <module name="omsstrategygateway" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hengtiansoft.strategy.gateway.*" />
+          <option name="PATTERN" value="com.hengtiansoft.strategy.gateway.config.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hengtiansoft.strategy.gateway.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoadBalanceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="omsstrategyloadbalance" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hengtiansoft.strategyfacade.LoadBalanceApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -229,6 +385,16 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hengtiansoft.strategy.StrategyApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StrategyApplication8081" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="omsstrategybiz" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hengtiansoft.strategy.StrategyApplication" />
+      <option name="PROGRAM_PARAMETERS" value="--spring.profiles.active=8081" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -246,13 +412,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Spring Boot.StrategyApplication8081" />
+      <item itemvalue="Spring Boot.LoadBalanceApplication" />
+      <item itemvalue="Spring Boot.EurekaServerApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.StrategyApplication" />
+      <item itemvalue="Spring Boot.TradeApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.EurekaServerApplication" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Spring Boot.GatewayApplication" />
-        <item itemvalue="Spring Boot.StrategyApplication" />
         <item itemvalue="Spring Boot.TradeApplication" />
+        <item itemvalue="Spring Boot.StrategyApplication" />
+        <item itemvalue="Spring Boot.EurekaServerApplication" />
+        <item itemvalue="Spring Boot.GatewayApplication" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -283,11 +458,18 @@
       <workItem from="1630059594428" duration="1164000" />
       <workItem from="1630111890397" duration="586000" />
       <workItem from="1633696783169" duration="15290000" />
+      <workItem from="1633880419324" duration="340000" />
+      <workItem from="1633931151031" duration="15845000" />
+      <workItem from="1634017131836" duration="8731000" />
+      <workItem from="1634103720727" duration="19146000" />
+      <workItem from="1634192179836" duration="12845000" />
+      <workItem from="1634275380915" duration="10515000" />
+      <workItem from="1634375569060" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34880000" />
+    <option name="totallyTimeSpent" value="102901000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -299,10 +481,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1107" height="589" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3241182" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32093775" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -318,14 +500,14 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969433" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49857005" visible="true" weight="0.32822758" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49857005" weight="0.3285968" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5014299" side_tool="true" weight="0.32822758" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32969433" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3285968" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" weight="0.32822758" />
-      <window_info anchor="bottom" id="Run Dashboard" order="15" sideWeight="0.49857005" weight="0.3916849" />
+      <window_info anchor="bottom" id="Run Dashboard" order="15" sideWeight="0.49857005" visible="true" weight="0.36412078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -342,394 +524,429 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/pre/PreDecorationFilter.class</url>
-          <line>60</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/pre/PreDecorationFilter.class</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>request.getQueryString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/EventBus.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StrategyPython/myp/busell.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/.m2/repository/net/sf/py4j/py4j/0.10.9.2/py4j-0.10.9.2.pom">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-trade-biz/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/github/openfeign/feign-core/10.7.4/feign-core-10.7.4-sources.jar!/feign/Feign.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="208">
+          <caret line="261" column="27" lean-forward="true" selection-start-line="261" selection-start-column="27" selection-end-line="261" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-openfeign-core/2.2.2.RELEASE/spring-cloud-openfeign-core-2.2.2.RELEASE-sources.jar!/org/springframework/cloud/openfeign/Targeter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/github/openfeign/feign-core/10.7.4/feign-core-10.7.4-sources.jar!/feign/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="103" column="26" lean-forward="true" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/AvailabilityFilteringRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/PredicateBasedRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-ribbon/2.2.2.RELEASE/spring-cloud-netflix-ribbon-2.2.2.RELEASE-sources.jar!/org/springframework/cloud/netflix/ribbon/RibbonAutoConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/dao/EsTemplate.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/TradeApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <caret line="16" column="44" lean-forward="true" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
           <folding>
-            <element signature="e#349#350#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#3643#3644#0" expanded="true" />
+            <element signature="e#3708#3709#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0.jar!/com/netflix/loadbalancer/IRule.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="60" column="31" lean-forward="true" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/EsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/strategy/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hengtiansoft/oms/OmsApplication.java" />
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/feign/TradeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TradeServiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/strategy/Accounts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot-starter-actuator/2.2.5.RELEASE/spring-boot-starter-actuator-2.2.5.RELEASE.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/StrategyApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot/2.2.5.RELEASE/spring-boot-2.2.5.RELEASE.jar!/org/springframework/boot/context/properties/ConfigurationProperties.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        <state>
+          <folding>
+            <element signature="e#0#285#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="21" />
+        <state relative-caret-position="475">
+          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/RouteLocator.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-core/2.3.0/ribbon-core-2.3.0.jar!/com/netflix/client/config/CommonClientConfigKey.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        <state relative-caret-position="2261">
+          <caret line="131" column="54" selection-start-line="131" selection-start-column="54" selection-end-line="131" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/SimpleRouteLocator.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-ribbon/2.2.2.RELEASE/spring-cloud-netflix-ribbon-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/ribbon/RibbonLoadBalancedRetryPolicy.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="72" column="33" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="33" />
+        <state>
           <folding>
-            <element signature="e#2600#2601#0" expanded="true" />
-            <element signature="e#2656#2657#0" expanded="true" />
+            <element signature="e#0#5378#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-web/5.2.4.RELEASE/spring-web-5.2.4.RELEASE.jar!/org/springframework/web/util/UrlPathHelper.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-core/2.3.0/ribbon-core-2.3.0-sources.jar!/com/netflix/client/config/CommonClientConfigKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#9028#9036#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-ribbon/2.2.2.RELEASE/spring-cloud-netflix-ribbon-2.2.2.RELEASE-sources.jar!/org/springframework/cloud/netflix/ribbon/RibbonLoadBalancedRetryPolicy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/RandomRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="e#2675#2676#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-ribbon/2.2.2.RELEASE/spring-cloud-netflix-ribbon-2.2.2.RELEASE-sources.jar!/org/springframework/cloud/netflix/ribbon/RibbonClientConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
-          <caret line="113" column="28" selection-start-line="113" selection-start-column="28" selection-end-line="113" selection-end-column="28" />
+          <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/EnableZuulProxy.class">
+    <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/Router/DynamicRouter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        <state relative-caret-position="-761">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/ZuulServerAutoConfiguration.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-core/2.3.0/ribbon-core-2.3.0-sources.jar!/com/netflix/client/IClientConfigAware.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        <state relative-caret-position="156">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/CompositeRouteLocator.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/AbstractLoadBalancerRule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/ZuulProperties.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-794">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="52">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
           <folding>
-            <element signature="e#4996#4997#0" expanded="true" />
-            <element signature="e#5032#5033#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/netflix/zuul/zuul-core/1.3.1/zuul-core-1.3.1.jar!/com/netflix/zuul/context/RequestContext.class">
+    <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <element signature="e#2853#2854#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="151">
+          <caret line="33" column="21" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="33" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/netflix/zuul/zuul-core/1.3.1/zuul-core-1.3.1.jar!/com/netflix/zuul/ZuulFilter.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/ClientConfigEnabledRoundRobinRule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        <state relative-caret-position="-95">
+          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/ZuulProxyAutoConfiguration.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/ILoadBalancer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="131" column="35" selection-start-line="131" selection-start-column="35" selection-end-line="131" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/pre/PreDecorationFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
-          <folding>
-            <element signature="e#559#777#0" expanded="true" />
-            <element signature="e#776#777#0" expanded="true" />
-            <element signature="e#938#1129#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/util/concurrent/ThreadFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/SubscriberRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-304">
-          <caret line="27" column="16" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/Subscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="53" column="17" lean-forward="true" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/discovery/DiscoveryClientRouteLocator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="62" column="40" lean-forward="true" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/ExecutorPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StrategyPython/strategies/0/strategy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/commons-io/commons-io/2.2/commons-io-2.2.jar!/org/apache/commons/io/FileUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="655" column="23" selection-start-line="655" selection-start-column="23" selection-end-line="655" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/model/Strategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/Process.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="159" column="24" selection-start-line="159" selection-start-column="24" selection-end-line="159" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/ctl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StrategyPython/jtest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-457">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StrategyPython/py4jtest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code-test/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code-test/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StrategyPython/handleTick.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/RunningStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+        <state relative-caret-position="156">
+          <caret line="79" column="7" lean-forward="true" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/GatewayApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="156">
+          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0.jar!/com/netflix/loadbalancer/Server.class">
+    <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="19">
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0.jar!/com/netflix/loadbalancer/IRule.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/30.1.1-jre/guava-30.1.1-jre.jar!/com/google/common/hash/Hashing.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="150" column="22" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxjava/1.3.8/rxjava-1.3.8.jar!/rx/Observable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="182" column="36" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/LoadBalancerContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-893">
+          <caret line="461" column="31" selection-start-line="461" selection-start-column="31" selection-end-line="461" selection-end-column="31" />
+          <folding>
+            <element signature="e#4324#4325#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/github/openfeign/feign-core/10.7.4/feign-core-10.7.4-sources.jar!/feign/Target.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/github/openfeign/feign-core/10.7.4/feign-core-10.7.4-sources.jar!/feign/SynchronousMethodHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="177" column="20" selection-start-line="177" selection-start-column="20" selection-end-line="177" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-openfeign-core/2.2.2.RELEASE/spring-cloud-openfeign-core-2.2.2.RELEASE-sources.jar!/org/springframework/cloud/openfeign/ribbon/LoadBalancerFeignClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/client/AbstractLoadBalancerAwareClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/reactive/LoadBalancerCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-317">
+          <caret line="259" column="28" selection-start-line="259" selection-start-column="28" selection-end-line="259" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/ZoneAwareLoadBalancer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="112" column="34" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/BaseLoadBalancer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="754" column="25" selection-start-line="754" selection-start-column="25" selection-end-line="754" selection-end-column="25" />
+          <folding>
+            <element signature="e#21385#21386#0" expanded="true" />
+            <element signature="e#21450#21451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <caret line="38" column="21" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="38" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-gateway/src/main/java/com/hengtiansoft/strategy/gateway/LoadBalancer.java">
+    <entry file="file://$PROJECT_DIR$/oms-trade-biz/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="246">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/feign/StrategyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret column="46" lean-forward="true" selection-start-column="46" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/LoadBalanceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1830#1831#0" expanded="true" />
-            <element signature="e#1883#1884#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="34" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-zuul/2.2.2.RELEASE/spring-cloud-netflix-zuul-2.2.2.RELEASE.jar!/org/springframework/cloud/netflix/zuul/filters/pre/PreDecorationFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/TradeApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="12" column="42" lean-forward="true" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/StrategyApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/feign/StrategyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="48" lean-forward="true" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.4.RELEASE/spring-web-5.2.4.RELEASE.jar!/org/springframework/web/context/request/RequestContextHolder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="17" lean-forward="true" selection-start-line="13" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/ThreadLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="198" column="16" selection-start-line="198" selection-start-column="16" selection-end-line="198" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/IRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/RoundRobinRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="45" column="43" lean-forward="true" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+          <folding>
+            <element signature="e#1317#1318#0" expanded="true" />
+            <element signature="e#1379#1380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/config/LoadBalancerRuleConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/controller/LoadBalanceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="20" column="57" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-loadbalance/src/main/java/com/hengtiansoft/strategyfacade/util/StrategyUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="e#203#204#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/30.1.1-jre/guava-30.1.1-jre-sources.jar!/com/google/common/hash/Hashing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="492" column="13" selection-start-line="492" selection-start-column="13" selection-end-line="492" selection-end-column="13" />
         </state>
       </provider>
     </entry>

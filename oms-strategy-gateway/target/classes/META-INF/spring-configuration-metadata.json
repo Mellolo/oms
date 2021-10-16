@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "dynamic",
+      "type": "com.hengtiansoft.strategy.gateway.config.DynamicRouteProperties",
+      "sourceType": "com.hengtiansoft.strategy.gateway.config.DynamicRouteProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "dynamic.enabled-dynamic-route",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.hengtiansoft.strategy.gateway.config.DynamicRouteProperties",
+      "defaultValue": false
+    }
+  ],
+  "hints": []
+}
