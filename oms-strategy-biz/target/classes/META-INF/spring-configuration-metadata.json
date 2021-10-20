@@ -1,17 +1,44 @@
 {
   "groups": [
     {
+      "name": "docker.client",
+      "type": "com.hengtiansoft.strategy.config.docker.DockerClientProperties",
+      "sourceType": "com.hengtiansoft.strategy.config.docker.DockerClientProperties"
+    },
+    {
       "name": "elasticsearch",
       "type": "com.hengtiansoft.strategy.config.EsProperties",
       "sourceType": "com.hengtiansoft.strategy.config.EsProperties"
     },
     {
       "name": "py4j",
-      "type": "com.hengtiansoft.strategy.config.GatewayProperties",
-      "sourceType": "com.hengtiansoft.strategy.config.GatewayProperties"
+      "type": "com.hengtiansoft.strategy.config.py4j.GatewayProperties",
+      "sourceType": "com.hengtiansoft.strategy.config.py4j.GatewayProperties"
     }
   ],
   "properties": [
+    {
+      "name": "docker.client.connection-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.docker.DockerClientProperties",
+      "defaultValue": 30
+    },
+    {
+      "name": "docker.client.docker-host",
+      "type": "java.lang.String",
+      "sourceType": "com.hengtiansoft.strategy.config.docker.DockerClientProperties"
+    },
+    {
+      "name": "docker.client.max-connections",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.docker.DockerClientProperties"
+    },
+    {
+      "name": "docker.client.response-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.docker.DockerClientProperties",
+      "defaultValue": 45
+    },
     {
       "name": "elasticsearch.connect-time-out",
       "type": "java.lang.Integer",
@@ -61,10 +88,21 @@
       "defaultValue": 30000
     },
     {
+      "name": "py4j.default-address",
+      "type": "java.lang.String",
+      "sourceType": "com.hengtiansoft.strategy.config.py4j.GatewayProperties"
+    },
+    {
       "name": "py4j.port",
       "type": "java.lang.Integer",
-      "sourceType": "com.hengtiansoft.strategy.config.GatewayProperties",
+      "sourceType": "com.hengtiansoft.strategy.config.py4j.GatewayProperties",
       "defaultValue": 25333
+    },
+    {
+      "name": "py4j.python-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.config.py4j.GatewayProperties",
+      "defaultValue": 25334
     }
   ],
   "hints": []

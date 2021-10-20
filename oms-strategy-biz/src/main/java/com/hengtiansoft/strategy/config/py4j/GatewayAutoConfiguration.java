@@ -1,6 +1,7 @@
-package com.hengtiansoft.strategy.config;
+package com.hengtiansoft.strategy.config.py4j;
 
 import com.hengtiansoft.strategy.entrypoint.EntryPoint;
+import com.hengtiansoft.strategy.gateway.JavaGatewayServer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +18,27 @@ public class GatewayAutoConfiguration {
     }
 
     @Bean
-    public GatewayServer gatewayServer(EntryPoint entryPoint){
-        GatewayServer gatewayServer =  new GatewayServer(entryPoint, properties.getPort());
+    public EntryPoint entryPoint() {
+        return new EntryPoint();
+    }
+
+    @Bean
+    public GatewayServer gatewayServer(){
+        GatewayServer gatewayServer = new JavaGatewayServer(
+                entryPoint(),
+                properties.getPort(),
+                properties.getPythonPort(),
+                properties.getDefaultAddress()
+        );
         gatewayServer.start();
         return gatewayServer;
+    }
+
+    public String getAddress() {
+        return properties.getDefaultAddress();
+    }
+
+    public int getPort() {
+        return properties.getPort();
     }
 }

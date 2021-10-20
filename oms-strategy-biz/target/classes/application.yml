@@ -17,3 +17,12 @@ eureka:
 
 py4j:
   port: 25333
+  pythonPort: 25334
+  defaultAddress: 10.112.173.192
+
+docker:
+  client:
+    connection-timeout: 30
+    response-timeout: 45
+    docker-host: tcp://192.168.29.131:2375
+
