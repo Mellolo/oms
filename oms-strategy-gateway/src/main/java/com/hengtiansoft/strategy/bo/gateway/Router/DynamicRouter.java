@@ -1,13 +1,10 @@
-package com.hengtiansoft.strategy.gateway.Router;
+package com.hengtiansoft.strategy.bo.gateway.Router;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.zuul.filters.RefreshableRouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.SimpleRouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 public class DynamicRouter extends SimpleRouteLocator implements RefreshableRouteLocator {
@@ -34,8 +31,8 @@ public class DynamicRouter extends SimpleRouteLocator implements RefreshableRout
         Map<String, ZuulProperties.ZuulRoute> routeMap = new HashMap<>();
         // 从数据源获取路由配置
         // 先模拟几个配置
-        String path = "/strategy/**";
-        String serviceId = "oms-strategy-biz";
+        String path = "/bo/**";
+        String serviceId = "oms-bo-biz";
 
         // 任意一个为空，则不进行动态路由
         if (StringUtils.isBlank(path) || StringUtils.isBlank(serviceId)) {

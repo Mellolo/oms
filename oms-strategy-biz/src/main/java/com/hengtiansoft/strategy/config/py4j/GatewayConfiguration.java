@@ -1,7 +1,7 @@
 package com.hengtiansoft.strategy.config.py4j;
 
 import com.hengtiansoft.strategy.entrypoint.EntryPoint;
-import com.hengtiansoft.strategy.gateway.JavaGatewayServer;
+import com.hengtiansoft.strategy.bo.gateway.JavaGatewayServer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,11 +9,11 @@ import py4j.GatewayServer;
 
 @Configuration
 @EnableConfigurationProperties(GatewayProperties.class)
-public class GatewayAutoConfiguration {
+public class GatewayConfiguration {
 
     private GatewayProperties properties;
 
-    public GatewayAutoConfiguration(GatewayProperties properties) {
+    public GatewayConfiguration(GatewayProperties properties) {
         this.properties = properties;
     }
 

@@ -1,4 +1,4 @@
-package com.hengtiansoft.strategy.gateway.config;
+package com.hengtiansoft.strategy.bo.gateway.config;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Strategy {
+    private String codeId;
     private String userId;
-    private String accountId;
     private String code;
 }

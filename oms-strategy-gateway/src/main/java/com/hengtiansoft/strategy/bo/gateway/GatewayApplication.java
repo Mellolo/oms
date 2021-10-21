@@ -1,4 +1,4 @@
-package com.hengtiansoft.strategy.gateway;
+package com.hengtiansoft.strategy.bo.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,10 +1,12 @@
-package com.hengtiansoft.strategy.strategy;
+package com.hengtiansoft.strategy.bo.account;
 
 import com.hengtiansoft.strategy.feign.TradeService;
 
 public class Account {
-    private String id; //所有调用交易模块所需要的账户相关信息和数据
+
     private TradeService tradeService;
+
+    private String id; //所有调用交易模块所需要的账户相关信息和数据
 
     public Account(String id, TradeService tradeService) //所有调用交易模块所需要的账户相关信息和数据
     {
@@ -20,11 +22,6 @@ public class Account {
     public boolean sell(String security, int volume)
     {
         return tradeService.sell(id, security, volume);
-    }
-
-    public void updatePosition(String security, int volume)
-    {
-        System.out.println("Account("+id+") position ("+security+") volume ("+volume+")");
     }
 
     public int getPosition(String security)

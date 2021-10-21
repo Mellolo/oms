@@ -1,4 +1,4 @@
-package com.hengtiansoft.strategy.gateway;
+package com.hengtiansoft.strategy.bo.gateway;
 
 import py4j.CallbackClient;
 import py4j.GatewayServer;

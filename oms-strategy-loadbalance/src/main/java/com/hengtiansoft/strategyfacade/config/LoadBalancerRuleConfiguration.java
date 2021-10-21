@@ -17,6 +17,7 @@ import java.util.*;
 
 @Configuration
 public class LoadBalancerRuleConfiguration {
+
     @Bean
     public IRule ribbonRule() {
         return new ConsistentHashRule();

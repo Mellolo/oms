@@ -1,13 +1,11 @@
 package com.hengtiansoft.strategy.blind;
 
-import com.hengtiansoft.eventbus.DisallowConcurrentEvents;
 import com.hengtiansoft.eventbus.SubscribeEvent;
 import com.hengtiansoft.strategy.model.Strategy;
-import com.hengtiansoft.strategy.strategy.BaseStrategy;
-import com.hengtiansoft.strategy.strategy.event.TickEvent;
+import com.hengtiansoft.strategy.bo.strategy.BaseStrategy;
+import com.hengtiansoft.strategy.bo.event.TickEvent;
 import org.apache.commons.io.FileUtils;
 
-import javax.annotation.PostConstruct;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -33,7 +31,7 @@ public class RunningStrategy extends BaseStrategy {
             if(!file.exists()) {
                 file.mkdirs();
             }
-            bufferedWriter = new BufferedWriter(new FileWriter(new File(file,"strategy.py")));
+            bufferedWriter = new BufferedWriter(new FileWriter(new File(file,"bo.py")));
             bufferedWriter.write(strategy.getCode());
             bufferedWriter.close();
             return true;

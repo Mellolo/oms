@@ -1,8 +1,5 @@
-from py4j.java_gateway import JavaGateway
+from py4j.java_gateway import JavaGateway, GatewayParameters
 
 if __name__ == '__main__':
-    gateway = JavaGateway()
-    print(gateway.entry_point.matchTest("raw", "target"))
-
-    # "Sends" python object to the Java side.
-    # numbers = operator_example.randomBinaryOperator(operator)
+    gateway = JavaGateway(gateway_parameters=GatewayParameters(address="10.112.173.179"))
+    print(gateway.entry_point.matchTest("", "target"))

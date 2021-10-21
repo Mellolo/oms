@@ -1,11 +1,7 @@
 import sys
-import os
+from hquant.gateway import get_running_strategy
 
 if __name__ == '__main__':
-    runningId = sys.argv[1]
-    sys.path.append(os.getcwd()+"/StrategyPython/strategies/"+runningId)
-    module = __import__("strategy")
-    handleTick = getattr(module, "handleTick")
-
-    param = sys.argv[2]
-    handleTick(param)
+    address = sys.argv[1]
+    port = sys.argv[2]
+    id = sys.argv[3]

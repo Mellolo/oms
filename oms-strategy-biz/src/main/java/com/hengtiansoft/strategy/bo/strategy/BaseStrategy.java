@@ -1,7 +1,8 @@
-package com.hengtiansoft.strategy.strategy;
+package com.hengtiansoft.strategy.bo.strategy;
 
 
 import com.hengtiansoft.eventbus.BaseListener;
+import com.hengtiansoft.strategy.bo.account.Account;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,10 @@ public class BaseStrategy extends BaseListener
 
     public void addAccount(Account account){
         accounts.add(account);
+    }
+
+    public int accountNum(){
+        return accounts.size();
     }
 
     final protected boolean buy(int index, String security, int volume)

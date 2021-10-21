@@ -4,9 +4,7 @@ import com.hengtiansoft.eventbus.BaseEvent;
 import com.hengtiansoft.eventbus.EventBus;
 import com.hengtiansoft.strategy.feign.TradeService;
 import com.hengtiansoft.strategy.model.Strategy;
-import com.hengtiansoft.strategy.strategy.Accounts;
-import com.hengtiansoft.strategy.strategy.event.TickEvent;
-import com.netflix.discovery.converters.Auto;
+import com.hengtiansoft.strategy.bo.event.TickEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +20,6 @@ public class ctl {
     @Autowired
     private EventBus eventBus;
 
-    @Autowired
-    Accounts accounts;
 
     //@GetMapping("unregister")
     public void unregister(String StrategyId)
@@ -56,12 +52,6 @@ public class ctl {
     @GetMapping("trade")
     public void trade()
     {
-        accounts.addAccount("a01");
-        accounts.addAccount("a02");
-        accounts.addAccount("a03");
-
-        accounts.getAccount("a01").buy("300081",700);
-        accounts.getAccount("a02").sell("300082",700);
         System.out.println(tradeService.getPosition("3", "000001"));
     }
 }

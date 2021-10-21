@@ -5,7 +5,7 @@ elasticsearch:
 
 spring:
   application:
-    name: oms-strategy-biz
+    name: oms-bo-biz
 
 server:
   port: 8081

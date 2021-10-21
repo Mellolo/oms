@@ -1,6 +1,6 @@
-package com.hengtiansoft.strategy.gateway.config;
+package com.hengtiansoft.strategy.bo.gateway.config;
 
-import com.hengtiansoft.strategy.gateway.Router.DynamicRouter;
+import com.hengtiansoft.strategy.bo.gateway.Router.DynamicRouter;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.netflix.zuul.filters.SimpleRouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
