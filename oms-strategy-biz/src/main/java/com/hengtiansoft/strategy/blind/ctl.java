@@ -36,7 +36,7 @@ public class ctl {
                 "    gateway = JavaGateway()\n" +
                 "    print(gateway.entry_point.matchTest(\"raw\", \"target\"))\n" +
                 "    print(s)");
-        RunningStrategy rs = new RunningStrategy(s);
+        RunningStrategys rs = new RunningStrategys(s);
         rs.init();
         rs.addEventListened(TickEvent.class,"000001.XSHE");
         rs.register(eventBus);

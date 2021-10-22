@@ -21,10 +21,11 @@ public class RegisterController {
     private TradeService tradeService;
 
     @GetMapping("register")
-    public void register(String strategyId, String codeId, String userId, String[] accounts)
+    public boolean register(String strategyId, String codeId, String userId, String[] accounts)
     {
-        //todo: 去判定是否能注册这几个accounts
+        System.out.println("strategyId:"+strategyId+",codeId:"+codeId+",userId:"+userId+",accounts:"+ Arrays.toString(accounts));
         try {
+            //todo: 去判定是否能注册这几个accounts
             Strategy s = new Strategy(codeId, userId,"from py4j.java_gateway import JavaGateway\n\n" +
                     "def handleTick(s):\n" +
                     "    gateway = JavaGateway()\n" +
@@ -34,15 +35,15 @@ public class RegisterController {
             for(String account : accounts) {
                 rs.addAccount(new Account(account, tradeService));
             }
+            // todo：策略信息加入到数据库
             // 加入到strategyMap
             strategyEngine.getStrategyMap().put(strategyId, rs);
-
+            strategyEngine.getEventBus().register(rs);
         }
         catch (Exception e) {
 
         }
-
-        System.out.println("strategyId:"+strategyId+",codeId:"+codeId+",userId:"+userId+",accounts:"+ Arrays.toString(accounts));
+        return false;
     }
 
     @GetMapping("unregister")

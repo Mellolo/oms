@@ -1,6 +1,6 @@
 spring:
   application:
-    name: oms-bo-loadbalance
+    name: oms-strategy-loadbalance
 
 server:
   port: 80

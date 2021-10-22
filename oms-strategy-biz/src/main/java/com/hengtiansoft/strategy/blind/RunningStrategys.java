@@ -11,12 +11,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 
-public class RunningStrategy extends BaseStrategy {
+public class RunningStrategys extends BaseStrategy {
 
     private String id;
     private Strategy strategy;
 
-    public RunningStrategy(Strategy strategy)
+    public RunningStrategys(Strategy strategy)
     {
         this.id = UUID.randomUUID().toString();
         this.strategy = strategy;

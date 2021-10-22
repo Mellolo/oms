@@ -18,4 +18,4 @@ eureka:
 py4j:
   port: 25332
   pythonPort: 25334
-  defaultAddress: 10.112.173.192
+  defaultAddress: 10.112.173.221

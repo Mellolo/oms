@@ -23,8 +23,8 @@ management:
 zuul:
   routes:
     strategy:
-      path: /strategy/**
-      service-id: oms-strategy-biz
+      path: /bo/**
+      service-id: oms-bo-biz
     trade:
       path: /trade/**
       service-id: oms-trade-biz

@@ -55,7 +55,7 @@ public class EsTemplate {
 
             JSONObject source = JSONObject.parseObject(searchHit.getSourceAsString());
             strategy.setUserId(source.getString("userId"));
-            strategy.setAccountId(source.getString("accountId"));
+            strategy.setId(source.getString("accountId"));
             strategy.setCode(source.getString("code"));
             strategyList.add(strategy);
         }

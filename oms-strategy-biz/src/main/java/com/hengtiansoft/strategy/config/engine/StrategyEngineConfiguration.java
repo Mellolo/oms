@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StrategyEngineConfiguration {
 
     @Bean
-    Map<String, RunningStrategy> strategyMap() {
+    public Map<String, RunningStrategy> strategyMap() {
         return new ConcurrentHashMap<>();
     }
 

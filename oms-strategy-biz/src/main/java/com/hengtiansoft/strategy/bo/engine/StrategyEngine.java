@@ -11,5 +11,5 @@ import java.util.Map;
 @AllArgsConstructor
 public class StrategyEngine {
     private Map<String, RunningStrategy> strategyMap;
-    public EventBus eventBus;
+    private EventBus eventBus;
 }
