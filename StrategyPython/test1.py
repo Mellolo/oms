@@ -1,8 +1,5 @@
-import numpy
-import time
+from hquant.trade.order import OrderManager
 
 if __name__ == '__main__':
 
-    print("Start : %s" % time.ctime())
-    time.sleep(1)
-    print("End : %s" % time.ctime())
+    OrderManager

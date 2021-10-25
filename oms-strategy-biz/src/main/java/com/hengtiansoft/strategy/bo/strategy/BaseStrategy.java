@@ -21,15 +21,15 @@ public class BaseStrategy extends BaseListener
 
     final public boolean buy(int index, String security, int volume)
     {
-        return accounts.get(index).buy(security,volume);
+        return accounts.get(index).buy(security, volume);
     }
 
     final public boolean sell(int index, String security, int volume)
     {
-        return accounts.get(index).sell(security,volume);
+        return accounts.get(index).sell(security, volume);
     }
 
-    final public int getPosition(int index, String security, int volume)
+    final public int getPosition(int index, String security)
     {
         return accounts.get(index).getPosition(security);
     }
