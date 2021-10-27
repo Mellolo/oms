@@ -17,7 +17,7 @@ public class TradeServiceController {
     @RequestMapping(value = "buy" , method = RequestMethod.GET)
     boolean buy(String accountId, String security, int volume)
     {
-        System.out.println("Account("+accountId+") sell ("+security+") volume ("+volume+")");
+        System.out.println("Account("+accountId+") buy ("+security+") volume ("+volume+")");
         return true;
     }
 

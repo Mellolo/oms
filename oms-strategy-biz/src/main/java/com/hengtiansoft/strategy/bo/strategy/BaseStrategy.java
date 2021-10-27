@@ -11,26 +11,23 @@ public class BaseStrategy extends BaseListener
 {
     private List<Account> accounts = new ArrayList<>();
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
         accounts.add(account);
     }
 
-    public int accountNum(){
+    public final int accountNum() {
         return accounts.size();
     }
 
-    final public boolean buy(int index, String security, int volume)
-    {
+    public final boolean buy(int index, String security, int volume) {
         return accounts.get(index).buy(security, volume);
     }
 
-    final public boolean sell(int index, String security, int volume)
-    {
+    public final boolean sell(int index, String security, int volume) {
         return accounts.get(index).sell(security, volume);
     }
 
-    final public int getPosition(int index, String security)
-    {
+    public final int getPosition(int index, String security) {
         return accounts.get(index).getPosition(security);
     }
 }

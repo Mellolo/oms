@@ -67,7 +67,6 @@ public class RunningStrategys extends BaseStrategy {
     //@DisallowConcurrentEvents
     public void HandleTickSynchronized(TickEvent tickEvent) throws Exception
     {
-        System.out.println(buy(0,"600001",300));
     }
 
     final public void subscribe(String security)

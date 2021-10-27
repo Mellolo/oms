@@ -18,7 +18,7 @@ eureka:
 py4j:
   port: 25333
   pythonPort: 25334
-  defaultAddress: 10.112.173.221
+  defaultAddress: 10.112.173.113
 
 docker:
   client:

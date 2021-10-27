@@ -1,6 +1,6 @@
 from py4j.java_gateway import JavaGateway, GatewayParameters
 
 if __name__ == '__main__':
-    gateway = JavaGateway(gateway_parameters=GatewayParameters(address="10.112.173.221"))
+    gateway = JavaGateway(gateway_parameters=GatewayParameters(address="10.112.173.113"))
     # print(gateway.entry_point.matchTest("aaa", None))
-    print(gateway.entry_point.getStrategy("77c1a69e-d45c-4d70-bb48-a339e42586f6").buy(0,'61',200))
+    print(gateway.entry_point.getStrategy("522a18d7-cdf2-4a95-90f7-adcfd20831a1"))
