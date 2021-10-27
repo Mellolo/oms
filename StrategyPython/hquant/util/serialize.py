@@ -1,13 +1,10 @@
 # coding:utf-8
-
-from ..strategy import BaseStrategy
-
 import os
 import pickle
 from inspect import isfunction
 
 
-def dump_strategy(strategy: BaseStrategy, file_path: str):
+def dump_static(strategy, file_path: str):
     static_dict = dict(strategy.__class__.__dict__)
     d = dict()
     for field in static_dict.keys():
@@ -17,7 +14,7 @@ def dump_strategy(strategy: BaseStrategy, file_path: str):
     pickle.dump(d, f)
 
 
-def load_strategy(strategy: BaseStrategy, file_path: str):
+def load_static(strategy, file_path: str):
     if os.path.exists(file_path):
         f = open(file_path, 'rb')
         d = dict(pickle.load(f))

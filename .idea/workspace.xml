@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb938665-b47b-489a-9419-7a2d98a0cf01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/StrategyPython/hquant/decorator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StrategyPython/hquant/decorator/singleton.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StrategyPython/hquant/strategy/tick.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StrategyPython/hquant/util/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StrategyPython/hquant/util/serialize.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StrategyPython/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StrategyPython/handleTick.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/handleTick.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/strategy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/strategy/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/strategy/strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/strategy/strategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/throwable/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/throwable/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/throwable/define.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/trade/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/trade/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/py4jtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/py4jtest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyPython/strategy/strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/strategy/strategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/RunningStrategys.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/RunningStrategys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/BaseStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/BaseStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TradeServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TradeServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-trade-biz/target/classes/com/hengtiansoft/trade/controller/TradeServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/oms-trade-biz/target/classes/com/hengtiansoft/trade/controller/TradeServiceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/trade/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/trade/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/util/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StrategyPython/hquant/util/serialize.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrategyPython/hquant/util/serialize.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,13 +30,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="494">
               <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/docker/DockerClientConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="201">
@@ -64,27 +49,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/py4j/GatewayProperties.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
+            <state relative-caret-position="475">
               <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TradeServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="247">
               <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
             </state>
           </provider>
@@ -326,8 +302,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,7 +314,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1635349960714" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1635353436138" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Git/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -470,8 +446,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.StrategyApplication" />
         <item itemvalue="Spring Boot.TradeApplication" />
+        <item itemvalue="Spring Boot.StrategyApplication" />
         <item itemvalue="Spring Boot.EurekaServerApplication" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Spring Boot.GatewayApplication" />
@@ -520,12 +496,13 @@
       <workItem from="1634883599761" duration="9008000" />
       <workItem from="1635144571419" duration="6864000" />
       <workItem from="1635230098119" duration="2113000" />
-      <workItem from="1635312011047" duration="9421000" />
+      <workItem from="1635312011047" duration="10644000" />
+      <workItem from="1635353699741" duration="2190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197708000" />
+    <option name="totallyTimeSpent" value="201121000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -538,9 +515,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37267584" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3791431" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -556,7 +532,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969433" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49857005" weight="0.3285968" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49857005" weight="0.3280142" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5014299" side_tool="true" weight="0.32822758" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3285968" />
@@ -602,13 +578,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$MAVEN_REPOSITORY$/com/github/docker-java/docker-java/3.2.12/docker-java-3.2.12.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/github/docker-java/docker-java-transport-httpclient5/3.2.12/docker-java-transport-httpclient5-3.2.12.jar!/com/github/dockerjava/httpclient5/ApacheDockerHttpClient.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -839,17 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/py4j/GatewayConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -951,19 +909,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/docker/DockerClientProperties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/TradeApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/py4j/GatewayProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TradeServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/ribbon/ribbon-loadbalancer/2.3.0/ribbon-loadbalancer-2.3.0-sources.jar!/com/netflix/loadbalancer/LoadBalancerContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="482" selection-start-line="482" selection-end-line="482" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -975,34 +979,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/TradeApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/py4j/GatewayProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-trade-biz/src/main/java/com/hengtiansoft/trade/controller/TradeServiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
         </state>
       </provider>
     </entry>

@@ -2,7 +2,7 @@ import sys
 
 from hquant.strategy import Tick
 from hquant.trade import OrderManager
-from hquant.util import dump_strategy, load_strategy
+from hquant.util import dump_static, load_static
 from strategy.strategy import Strategy
 
 if __name__ == '__main__':
@@ -14,7 +14,7 @@ if __name__ == '__main__':
     strategy = Strategy()
     strategy.set_order_manager(order_manager)
 
-    load_strategy(strategy, "./strategy/save.json")
+    load_static(strategy, "./strategy/save.json")
 
     tick = Tick()
     tick.open = sys.argv[4]
@@ -22,6 +22,6 @@ if __name__ == '__main__':
 
     strategy.handle_tick(tick)
 
-    dump_strategy(strategy, "./strategy/save.json")
+    dump_static(strategy, "./strategy/save.json")
 
 

@@ -1,2 +1,2 @@
 # coding:utf-8
-from .serialize import dump_strategy, load_strategy
+from .serialize import dump_static, load_static
