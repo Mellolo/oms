@@ -61,15 +61,13 @@ public class TickEvent extends BaseEvent {
 
     @Override
     public String toString() {
-        return "TickEvent{" +
-                "code='" + code +
-                ", date=" + date +
-                ", current=" + current +
-                ", open=" + open +
-                ", high=" + high +
-                ", low=" + low +
-                ", volume=" + volume +
-                ", money=" + money +
-                "} " + super.toString();
+        return "code=" + code +
+                "&date=" + date +
+                "&current=" + current +
+                "&open=" + open +
+                "&high=" + high +
+                "&low=" + low +
+                "&volume=" + volume +
+                "&money=" + money;
     }
 }

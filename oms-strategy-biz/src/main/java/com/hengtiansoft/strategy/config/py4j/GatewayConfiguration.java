@@ -42,12 +42,4 @@ public class GatewayConfiguration {
         gatewayServer.start();
         return gatewayServer;
     }
-
-    public String getAddress() {
-        return properties.getDefaultAddress();
-    }
-
-    public int getPort() {
-        return properties.getPort();
-    }
 }
