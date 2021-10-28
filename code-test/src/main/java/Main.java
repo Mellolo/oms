@@ -1,19 +1,22 @@
 import com.alibaba.fastjson.JSONObject;
 import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.api.model.Container;
-import com.github.dockerjava.api.model.Image;
-import com.github.dockerjava.api.model.Info;
-import com.github.dockerjava.api.model.SearchItem;
+import com.github.dockerjava.api.async.ResultCallback;
+import com.github.dockerjava.api.command.ExecCreateCmdResponse;
+import com.github.dockerjava.api.command.ExecStartCmd;
+import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.command.WaitContainerResultCallback;
+import com.github.dockerjava.api.model.*;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientConfig;
 import com.github.dockerjava.core.DockerClientImpl;
+import com.github.dockerjava.core.command.ExecStartResultCallback;
 import com.github.dockerjava.httpclient5.ApacheDockerHttpClient;
 import com.github.dockerjava.transport.DockerHttpClient;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -37,20 +40,24 @@ public class Main {
 
         DockerClient dockerClient = DockerClientImpl.getInstance(config, httpClient);
 
-        Info info = dockerClient.infoCmd().exec();
-        String infoStr = JSONObject.toJSONString(info);
-        System.out.println("docker的环境信息如下：=================");
-        System.out.println(info);
+        ExecCreateCmdResponse execCreateCmdResponse = dockerClient
+                .execCreateCmd("py-docker")
+                .withAttachStdout(true)
+                .withAttachStderr(true)
+                .withUser("strategy")
+                .withWorkingDir("/home/strategy_scripts")
+                .withCmd("python","./handleTick.py")
+                .exec();
 
-        List<Container> dockerSearch = dockerClient.listContainersCmd().withShowAll(true).exec();
-        System.out.println("Search returned" + dockerSearch.toString());
-
+        LogResultCallback resultCallback = dockerClient
+                .execStartCmd(execCreateCmdResponse.getId())
+                .exec(new LogResultCallback());
         try {
-            System.out.println(InetAddress.getLocalHost().getHostAddress());
-            System.out.println(InetAddress.getByName("127.0.0.1"));
-            System.out.println(InetAddress.getByName("10.112.173.192"));
-        } catch (UnknownHostException e) {
+            resultCallback.awaitCompletion();
+        } catch (Exception e) {
+
         }
+         System.out.println(resultCallback.getResult());
     }
 
 }

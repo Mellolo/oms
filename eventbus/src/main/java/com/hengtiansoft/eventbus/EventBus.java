@@ -1,19 +1,19 @@
 package com.hengtiansoft.eventbus;
 
 import com.google.common.base.MoreObjects;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.concurrent.Executor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class EventBus{
-    private static final Logger logger = Logger.getLogger(EventBus.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(EventBus.class);
 
     private final String identifier;
     private final ExecutorPool executorPool;
@@ -67,8 +67,7 @@ public class EventBus{
             exceptionHandler.handleException(e, context);
         } catch (Throwable e2) {
             // if the handler threw an exception... well, just log it
-            logger.log(
-                    Level.SEVERE,
+            logger.error(
                     String.format(Locale.ROOT, "Exception %s thrown while handling exception: %s", e2, e),
                     e2);
         }
@@ -129,13 +128,11 @@ public class EventBus{
         @Override
         public void handleException(Throwable exception, SubscriberExceptionContext context) {
             Logger logger = logger(context);
-            if (logger.isLoggable(Level.SEVERE)) {
-                logger.log(Level.SEVERE, message(context), exception);
-            }
+            //todo
         }
 
         private static Logger logger(SubscriberExceptionContext context) {
-            return Logger.getLogger(EventBus.class.getName() + "." + context.getEventBus().identifier());
+            return LoggerFactory.getLogger(EventBus.class.getName() + "." + context.getEventBus().identifier());
         }
 
         private static String message(SubscriberExceptionContext context) {

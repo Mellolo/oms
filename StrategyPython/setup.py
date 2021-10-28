@@ -12,7 +12,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "hquant",
-    version = "0.0.1",
+    version = "0.0.2",
     keywords = ("quant", "hquant"),
     description = "A quant package",
     license = "apache 3.0",

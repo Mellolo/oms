@@ -16,13 +16,7 @@ if __name__ == '__main__':
 
     load_static(strategy, "./strategy/save.json")
 
-    tick = Tick()
-    tick_str = sys.argv[4]
-    for arg in tick_str.split("&"):
-        field, value = arg.split("=")
-        tick.__setattr__(field, value)
-
-    strategy.handle_tick(tick)
+    strategy.initialize()
 
     dump_static(strategy, "./strategy/save.json")
 

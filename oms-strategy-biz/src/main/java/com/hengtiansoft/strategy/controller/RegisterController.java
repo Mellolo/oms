@@ -1,5 +1,6 @@
 package com.hengtiansoft.strategy.controller;
 
+import com.github.dockerjava.api.DockerClient;
 import com.hengtiansoft.strategy.bo.account.Account;
 import com.hengtiansoft.strategy.bo.engine.StrategyEngine;
 import com.hengtiansoft.strategy.bo.strategy.RunningStrategy;
@@ -20,6 +21,9 @@ public class RegisterController {
     @Autowired
     private TradeService tradeService;
 
+    @Autowired
+    private DockerClient dockerClient;
+
     @GetMapping("register")
     public boolean register(String strategyId, String codeId, String userId, String[] accounts)
     {
@@ -31,7 +35,7 @@ public class RegisterController {
                     "    gateway = JavaGateway()\n" +
                     "    print(gateway.entry_point.matchTest(\"raw\", \"target\"))\n" +
                     "    print(s)");
-            RunningStrategy rs = new RunningStrategy(strategyId, s);
+            RunningStrategy rs = new RunningStrategy(strategyId, dockerClient);
             for(String account : accounts) {
                 rs.addAccount(new Account(account, tradeService));
             }

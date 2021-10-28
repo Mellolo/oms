@@ -1,5 +1,6 @@
 from strategies.s1.classname import echo
 import sys
+from hquant.strategy import Tick
 
 
 def test():
@@ -18,4 +19,8 @@ def test():
     mtd() # call def
 
 if __name__ == '__main__':
-    test()
+    tick = Tick()
+    tick_str = sys.argv[1]
+    for arg in tick_str.split("&"):
+        field, value = arg.split("=")
+        tick.__setattr__(field, value)
