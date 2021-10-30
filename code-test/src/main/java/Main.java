@@ -37,7 +37,13 @@ public class Main {
 
         DockerClient dockerClient = DockerClientImpl.getInstance(config, httpClient);
 
-        dockerClient.killContainerCmd("123").exec();
+        CreateContainerResponse containerResponse = dockerClient
+                .createContainerCmd("hquant:v1")
+                .withTty(true)
+                .withName("abc")
+                .withCmd("/bin/bash")
+                .exec();
+        dockerClient.startContainerCmd(containerResponse.getId()).exec();
 
     }
 

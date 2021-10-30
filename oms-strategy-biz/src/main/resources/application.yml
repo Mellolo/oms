@@ -6,6 +6,20 @@ elasticsearch:
 spring:
   application:
     name: oms-strategy-biz
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/oms?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC #Asia/Shanghai
+    username: oms
+    password: oms
+    druid:
+      initial-size: 10
+      max-active: 11
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.hengtiansoft.strategy.model
 
 server:
   port: 8080

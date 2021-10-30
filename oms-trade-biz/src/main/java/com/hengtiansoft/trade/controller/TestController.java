@@ -15,6 +15,6 @@ public class TestController {
     @RequestMapping(value = "test/register" , method = RequestMethod.GET)
     public void testRegister()
     {
-        strategyService.register("111","123",new String[]{"a","b"});
+        strategyService.register(111,"123",new String[]{"a","b"});
     }
 }

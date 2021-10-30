@@ -1,9 +1,7 @@
 package com.hengtiansoft.strategy.config.py4j;
 
-import com.hengtiansoft.strategy.bo.engine.StrategyEngine;
 import com.hengtiansoft.strategy.bo.strategy.RunningStrategy;
-import com.hengtiansoft.strategy.config.engine.StrategyEngineConfiguration;
-import com.hengtiansoft.strategy.entrypoint.EntryPoint;
+import com.hengtiansoft.strategy.bo.gateway.EntryPoint;
 import com.hengtiansoft.strategy.bo.gateway.JavaGatewayServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

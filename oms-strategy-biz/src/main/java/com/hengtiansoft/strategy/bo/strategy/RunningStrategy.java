@@ -9,7 +9,7 @@ import com.hengtiansoft.strategy.bo.docker.callback.LogResultCallback;
 import com.hengtiansoft.strategy.config.py4j.GatewayProperties;
 import com.hengtiansoft.strategy.exception.StrategyException;
 import com.hengtiansoft.strategy.bo.event.TickEvent;
-import com.hengtiansoft.strategy.model.Strategy;
+import com.hengtiansoft.strategy.model.StrategyModel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.BooleanUtils;
@@ -27,14 +27,16 @@ public class RunningStrategy extends BaseStrategy {
     private final static String IMAGE_NAME = "hquant:v1";
 
     private String id;
-    private Strategy strategy;
-    private DockerClient dockerClient;
+    private String userId;
+    private String code;
     private String containerId;
+    private DockerClient dockerClient;
 
-    public RunningStrategy(String id, Strategy strategy)
+    public RunningStrategy(String id, StrategyModel strategy)
     {
         this.id = id;
-        this.strategy = strategy;
+        this.userId = strategy.getUserId();
+        this.code = strategy.getCode();
         WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
         if(wac!=null) {
             this.dockerClient = wac.getBean(DockerClient.class);
@@ -48,6 +50,7 @@ public class RunningStrategy extends BaseStrategy {
         try {
             CreateContainerResponse containerResponse = this.dockerClient
                     .createContainerCmd(RunningStrategy.IMAGE_NAME)
+                    .withTty(true)
                     .withName(this.id)
                     .withCmd("/bin/bash")
                     .exec();
@@ -84,21 +87,11 @@ public class RunningStrategy extends BaseStrategy {
         }
     }
 
-    final public void subscribe(String security)
-    {
+    final public void subscribe(String security) {
         addEventListened(TickEvent.class, security);
     }
 
-    @SubscribeEvent
-    public void HandleTick(TickEvent tickEvent)
-    {
-        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-        if(wac==null) {
-            log.error(String.format("Null WebApplicationContext: %s", this.id));
-            return;
-        }
-        GatewayProperties properties = wac.getBean(GatewayProperties.class);
-
+    private void execDockerCmd(String... cmd) {
         Boolean isRunning = null;
         try {
             InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(this.containerId).exec();
@@ -121,15 +114,8 @@ public class RunningStrategy extends BaseStrategy {
                 .withAttachStderr(true)
                 .withUser("strategy")
                 .withWorkingDir(RunningStrategy.WORKING_DIR)
-                .withCmd("python",
-                        "./handleTick.py",
-                        properties.getDefaultAddress(),
-                        String.valueOf(properties.getPort()),
-                        this.id,
-                        tickEvent.toString()
-                )
+                .withCmd(cmd)
                 .exec();
-
         LogResultCallback resultCallback = dockerClient
                 .execStartCmd(execCreateCmdResponse.getId())
                 .exec(new LogResultCallback());
@@ -142,6 +128,38 @@ public class RunningStrategy extends BaseStrategy {
         System.out.println(resultCallback.getResult());
     }
 
+    private GatewayProperties getGatewayProperties() {
+        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
+        if(wac==null) {
+            throw new StrategyException(this.id, String.format("Null WebApplicationContext: %s", this.id));
+        }
+        return wac.getBean(GatewayProperties.class);
+    }
+
+    public void initialize() {
+        GatewayProperties properties = getGatewayProperties();
+        execDockerCmd(
+                "python",
+                "./initialize.py",
+                properties.getDefaultAddress(),
+                String.valueOf(properties.getPort()),
+                this.id
+        );
+    }
+
+    @SubscribeEvent
+    public void handleTick(TickEvent tickEvent) {
+        GatewayProperties properties = getGatewayProperties();
+        execDockerCmd(
+                "python",
+                "./handleTick.py",
+                properties.getDefaultAddress(),
+                String.valueOf(properties.getPort()),
+                this.id,
+                tickEvent.toString()
+        );
+    }
+
     private boolean createStrategyPy()
     {
         File file = null;
@@ -152,7 +170,7 @@ public class RunningStrategy extends BaseStrategy {
                 file.mkdirs();
             }
             bufferedWriter = new BufferedWriter(new FileWriter(new File(file,"strategy.py")));
-            bufferedWriter.write(strategy.getCode());
+            bufferedWriter.write(this.code);
             bufferedWriter.close();
             return true;
         }

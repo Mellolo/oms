@@ -3,7 +3,7 @@ package com.hengtiansoft.strategy.blind;
 import com.hengtiansoft.eventbus.BaseEvent;
 import com.hengtiansoft.eventbus.EventBus;
 import com.hengtiansoft.strategy.feign.TradeService;
-import com.hengtiansoft.strategy.model.Strategy;
+import com.hengtiansoft.strategy.model.StrategyModel;
 import com.hengtiansoft.strategy.bo.event.TickEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +30,7 @@ public class ctl {
     public void register(String StrategyId, String userId, String[] accounts)
     {
         System.out.println("register");
-        Strategy s = new Strategy("123","asd","from py4j.java_gateway import JavaGateway\n" +
+        StrategyModel s = new StrategyModel(123,"asd","from py4j.java_gateway import JavaGateway\n" +
                 "\n" +
                 "def handleTick(s):\n" +
                 "    gateway = JavaGateway()\n" +

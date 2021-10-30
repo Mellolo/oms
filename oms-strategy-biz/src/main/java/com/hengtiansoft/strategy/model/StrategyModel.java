@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Strategy {
-    private String id;
+public class StrategyModel {
+    private int id;
     private String userId;
     private String code;
 }

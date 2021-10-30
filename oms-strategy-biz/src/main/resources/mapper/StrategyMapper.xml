@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.springboot.mapper.StrategyMapper">
+
+    <select id="select" parameterType="int" resultMap="StrategyResultMap">
+        Select * from strategy where id = #{id}
+    </select>
+    <resultMap id="queryBaseResultMap" type="com.hengtiansoft.strategy.model.StrategyModel" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="code" property="content" typeHandler="com.hengtiansoft.strategy.model.handler.BlobStringHandler"/>
+    </resultMap>
+
+</mapper>

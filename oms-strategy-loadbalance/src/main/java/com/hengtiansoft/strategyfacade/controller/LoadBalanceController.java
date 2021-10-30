@@ -15,7 +15,7 @@ public class LoadBalanceController {
     private StrategyService strategyService;
 
     @GetMapping("register")
-    public void register(String codeId, String userId, String[] accounts)
+    public void register(int codeId, String userId, String[] accounts)
     {
         String strategyId = UUID.randomUUID().toString();
         System.out.println(StrategyUtil.getStrategyId());

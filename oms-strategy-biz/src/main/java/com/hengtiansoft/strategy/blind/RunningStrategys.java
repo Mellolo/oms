@@ -1,7 +1,7 @@
 package com.hengtiansoft.strategy.blind;
 
 import com.hengtiansoft.eventbus.SubscribeEvent;
-import com.hengtiansoft.strategy.model.Strategy;
+import com.hengtiansoft.strategy.model.StrategyModel;
 import com.hengtiansoft.strategy.bo.strategy.BaseStrategy;
 import com.hengtiansoft.strategy.bo.event.TickEvent;
 import org.apache.commons.io.FileUtils;
@@ -14,9 +14,9 @@ import java.util.UUID;
 public class RunningStrategys extends BaseStrategy {
 
     private String id;
-    private Strategy strategy;
+    private StrategyModel strategy;
 
-    public RunningStrategys(Strategy strategy)
+    public RunningStrategys(StrategyModel strategy)
     {
         this.id = UUID.randomUUID().toString();
         this.strategy = strategy;
