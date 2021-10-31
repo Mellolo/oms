@@ -11,6 +11,7 @@ import com.github.dockerjava.httpclient5.ApacheDockerHttpClient;
 import com.github.dockerjava.transport.DockerHttpClient;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.BooleanUtils;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.io.*;
@@ -37,13 +38,34 @@ public class Main {
 
         DockerClient dockerClient = DockerClientImpl.getInstance(config, httpClient);
 
-        CreateContainerResponse containerResponse = dockerClient
-                .createContainerCmd("hquant:v1")
-                .withTty(true)
-                .withName("abc")
-                .withCmd("/bin/bash")
-                .exec();
-        dockerClient.startContainerCmd(containerResponse.getId()).exec();
+        try {
+            // 1. 获取容器运行状态
+            InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd("py-docker").exec();
+            Boolean isRunning = inspectContainerResponse.getState().getRunning();
+            // 2. 开启容器
+            if(BooleanUtils.isFalse(isRunning)) {
+                dockerClient.startContainerCmd("py-docker").exec();
+            }
+            // 3. 执行命令
+            ExecCreateCmdResponse execCreateCmdResponse = dockerClient
+                    .execCreateCmd("py-docker")
+                    .withAttachStdout(true)
+                    .withAttachStderr(true)
+                    .withUser("root")
+                    .withWorkingDir("/home/strategy_scripts/")
+                    .withCmd("python",
+                            "./handleTick.py")
+                    .exec();
+            ExecStartResultCallback resultCallback = dockerClient
+                    .execStartCmd(execCreateCmdResponse.getId())
+                    .exec(new ExecStartResultCallback(null,System.err));
+            resultCallback.awaitCompletion();
+            // 4. 储存到数据库
+            // todo:存日志到数据库
+            //System.out.println(resultCallback.getResult());
+            //return true;
+        } catch (Exception e) {
+        }
 
     }
 

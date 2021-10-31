@@ -73,11 +73,11 @@ public class EventBus{
         }
     }
 
-    public void register(BaseListener listener) {
+    void register(BaseListener listener) {
         subscribers.register(listener);
     }
 
-    public void unregister(BaseListener listener) {
+    void unregister(BaseListener listener) {
         subscribers.unregister(listener);
     }
 

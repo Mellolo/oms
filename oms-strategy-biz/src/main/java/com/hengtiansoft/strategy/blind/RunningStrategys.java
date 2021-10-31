@@ -3,7 +3,7 @@ package com.hengtiansoft.strategy.blind;
 import com.hengtiansoft.eventbus.SubscribeEvent;
 import com.hengtiansoft.strategy.model.StrategyModel;
 import com.hengtiansoft.strategy.bo.strategy.BaseStrategy;
-import com.hengtiansoft.strategy.bo.event.TickEvent;
+import com.hengtiansoft.strategy.bo.strategy.event.TickEvent;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;

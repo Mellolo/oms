@@ -4,7 +4,7 @@ import com.hengtiansoft.eventbus.BaseEvent;
 import com.hengtiansoft.eventbus.EventBus;
 import com.hengtiansoft.strategy.feign.TradeService;
 import com.hengtiansoft.strategy.model.StrategyModel;
-import com.hengtiansoft.strategy.bo.event.TickEvent;
+import com.hengtiansoft.strategy.bo.strategy.event.TickEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

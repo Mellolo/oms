@@ -1,4 +1,4 @@
-package com.hengtiansoft.strategy.bo.event;
+package com.hengtiansoft.strategy.bo.strategy.event;
 
 import com.hengtiansoft.eventbus.BaseEvent;
 

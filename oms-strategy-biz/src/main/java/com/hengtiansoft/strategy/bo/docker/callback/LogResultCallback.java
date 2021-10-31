@@ -12,9 +12,19 @@ import java.io.OutputStream;
 public class LogResultCallback extends ResultCallbackTemplate<LogResultCallback, Frame> {
 
     private OutputStream out = new ByteArrayOutputStream();
+    private OutputStream err = new ByteArrayOutputStream();
+    private boolean isError;
 
     public String getResult() {
         return out.toString();
+    }
+
+    public String getError() {
+        return out.toString();
+    }
+
+    public boolean isError() {
+        return isError;
     }
 
     @Override
@@ -24,10 +34,16 @@ public class LogResultCallback extends ResultCallbackTemplate<LogResultCallback,
                 switch (frame.getStreamType()) {
                     case STDOUT:
                     case RAW:
-                    case STDERR:
-                        if(out != null) {
+                        if (out != null) {
                             out.write(frame.getPayload());
                             out.flush();
+                        }
+                        break;
+                    case STDERR:
+                        isError = true;
+                        if (err != null) {
+                            err.write(frame.getPayload());
+                            err.flush();
                         }
                         break;
                     default:

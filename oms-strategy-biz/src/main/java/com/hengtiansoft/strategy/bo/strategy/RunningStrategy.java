@@ -8,7 +8,8 @@ import com.hengtiansoft.eventbus.SubscribeEvent;
 import com.hengtiansoft.strategy.bo.docker.callback.LogResultCallback;
 import com.hengtiansoft.strategy.config.py4j.GatewayProperties;
 import com.hengtiansoft.strategy.exception.StrategyException;
-import com.hengtiansoft.strategy.bo.event.TickEvent;
+import com.hengtiansoft.strategy.bo.strategy.event.TickEvent;
+import com.hengtiansoft.strategy.model.RunningStrategyModel;
 import com.hengtiansoft.strategy.model.StrategyModel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -17,6 +18,10 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 
 @Slf4j
 public class RunningStrategy extends BaseStrategy {
@@ -32,44 +37,70 @@ public class RunningStrategy extends BaseStrategy {
     private String containerId;
     private DockerClient dockerClient;
 
-    public RunningStrategy(String id, StrategyModel strategy)
+    public RunningStrategy(String id, String userId, String code)
     {
         this.id = id;
-        this.userId = strategy.getUserId();
-        this.code = strategy.getCode();
+        this.userId = userId;
+        this.code = code;
         WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
         if(wac!=null) {
             this.dockerClient = wac.getBean(DockerClient.class);
         }
     }
 
+    public RunningStrategy(String id, StrategyModel strategy)
+    {
+        this(id, strategy.getUserId(), strategy.getCode());
+    }
+
+    public RunningStrategyModel getRunningStrategyModel() {
+        return new RunningStrategyModel(id, userId, code);
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
     public void init() {
-        if(!createStrategyPy()) {
-            throw new StrategyException(this.id, String.format("Cannot create strategy.py: %s", this.id));
-        }
+        Stack<String> rollbackStack = new Stack<>();
         try {
+            // 1. 创建文件（需要回滚）
+            createStrategyPy();
+            rollbackStack.push("deleteStrategyPy");
+            // 2. 创建容器（需要回滚）
             CreateContainerResponse containerResponse = this.dockerClient
                     .createContainerCmd(RunningStrategy.IMAGE_NAME)
                     .withTty(true)
                     .withName(this.id)
                     .withCmd("/bin/bash")
                     .exec();
+            rollbackStack.push("destroy");
+            // 3. 获取容器id
             this.containerId = containerResponse.getId();
+            // 4. 复制文件到容器中（需要回滚）
             this.dockerClient.copyArchiveToContainerCmd(this.containerId)
                     .withHostResource(RunningStrategy.CACHE_DIR + this.id +"/strategy.py")
                     .withRemotePath(RunningStrategy.CP_DIR)
                     .exec();
-            if(!deleteStrategyPy()) {
-                throw new StrategyException(this.id, String.format("Cannot delete strategy.py: %s", this.id));
-            }
-        }
-        catch (StrategyException e) {
-            destroy();
-            throw new StrategyException(this.id, String.format("Cannot init container: %s, %s", this.id, getStackTrace(e)));
+            // 5. 删除文件
+            deleteStrategyPy();
         }
         catch (Exception e) {
-            destroy();
-            deleteStrategyPy();
+            while(!rollbackStack.empty()) {
+                switch (rollbackStack.pop()) {
+                    case "destroy": {
+                        destroy();
+                        break;
+                    }
+                    case "deleteStrategyPy": {
+                        deleteStrategyPy();
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+            }
             throw new StrategyException(this.id, String.format("Cannot init container: %s, %s", this.id, getStackTrace(e)));
         }
     }
@@ -91,41 +122,41 @@ public class RunningStrategy extends BaseStrategy {
         addEventListened(TickEvent.class, security);
     }
 
-    private void execDockerCmd(String... cmd) {
-        Boolean isRunning = null;
+    private boolean execDockerCmd(String... cmd) {
         try {
+            // 1. 获取容器运行状态
             InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(this.containerId).exec();
-            isRunning = inspectContainerResponse.getState().getRunning();
+            Boolean isRunning = inspectContainerResponse.getState().getRunning();
+            // 2. 开启容器
+            if(BooleanUtils.isFalse(isRunning)) {
+                dockerClient.startContainerCmd(this.containerId).exec();
+            }
+            // 3. 执行命令
+            ExecCreateCmdResponse execCreateCmdResponse = this.dockerClient
+                    .execCreateCmd("py-docker")
+                    .withAttachStdout(true)
+                    .withAttachStderr(true)
+                    .withUser("strategy")
+                    .withWorkingDir(RunningStrategy.WORKING_DIR)
+                    .withCmd(cmd)
+                    .exec();
+            LogResultCallback resultCallback = dockerClient
+                    .execStartCmd(execCreateCmdResponse.getId())
+                    .exec(new LogResultCallback());
+            resultCallback.awaitCompletion();
+            // 4. 储存到数据库
+            // todo:存日志到数据库
+            System.out.println(resultCallback.getResult());
+            return true;
         } catch (Exception e) {
             try {
                 init();
             } catch (Exception ex) {
                 log.error(String.format("Error init when HandleTick: %s", this.id));
             }
-            throw new StrategyException(this.id, String.format("Cannot init HandleTick: %s, %s", this.id, getStackTrace(e)));
+            log.error(String.format("Cannot execute command: %s, %s", this.id, getStackTrace(e)));
         }
-        if(BooleanUtils.isFalse(isRunning)) {
-            dockerClient.startContainerCmd(this.containerId).exec();
-        }
-
-        ExecCreateCmdResponse execCreateCmdResponse = this.dockerClient
-                .execCreateCmd("py-docker")
-                .withAttachStdout(true)
-                .withAttachStderr(true)
-                .withUser("strategy")
-                .withWorkingDir(RunningStrategy.WORKING_DIR)
-                .withCmd(cmd)
-                .exec();
-        LogResultCallback resultCallback = dockerClient
-                .execStartCmd(execCreateCmdResponse.getId())
-                .exec(new LogResultCallback());
-        try {
-            resultCallback.awaitCompletion();
-        } catch (Exception e) {
-            throw new StrategyException(this.id, String.format("Cannot handle tick: %s ", this.id));
-        }
-        // todo:存日志到数据库
-        System.out.println(resultCallback.getResult());
+        return false;
     }
 
     private GatewayProperties getGatewayProperties() {
@@ -138,19 +169,22 @@ public class RunningStrategy extends BaseStrategy {
 
     public void initialize() {
         GatewayProperties properties = getGatewayProperties();
-        execDockerCmd(
+        boolean execResult = execDockerCmd(
                 "python",
                 "./initialize.py",
                 properties.getDefaultAddress(),
                 String.valueOf(properties.getPort()),
                 this.id
         );
+        if(!execResult) {
+            throw new StrategyException(this.id, String.format("Cannot initialize: %s", this.id));
+        }
     }
 
     @SubscribeEvent
     public void handleTick(TickEvent tickEvent) {
         GatewayProperties properties = getGatewayProperties();
-        execDockerCmd(
+        boolean execResult = execDockerCmd(
                 "python",
                 "./handleTick.py",
                 properties.getDefaultAddress(),
@@ -158,9 +192,12 @@ public class RunningStrategy extends BaseStrategy {
                 this.id,
                 tickEvent.toString()
         );
+        if(!execResult) {
+            throw new StrategyException(this.id, String.format("Cannot handleTick: %s", this.id));
+        }
     }
 
-    private boolean createStrategyPy()
+    private void createStrategyPy()
     {
         File file = null;
         BufferedWriter bufferedWriter = null;
@@ -172,42 +209,38 @@ public class RunningStrategy extends BaseStrategy {
             bufferedWriter = new BufferedWriter(new FileWriter(new File(file,"strategy.py")));
             bufferedWriter.write(this.code);
             bufferedWriter.close();
-            return true;
         }
         catch(IOException e) {
+            // 回滚文件夹创建
+            if(bufferedWriter!=null) {
+                try {
+                    bufferedWriter.close();
+                } catch (IOException ex) {
+                    log.error(String.format("Error abort directory creating when closing bufferedWriter: %s, %s", this.id, getStackTrace(ex)));
+                }
+            }
             if(file.exists()) {
                 try {
                     FileUtils.deleteDirectory(file);
                 } catch (IOException ex) {
-                    log.error(String.format("Error delete directory when aborting: %s, %s", this.id, getStackTrace(ex)));
+                    log.error(String.format("Error abort directory creating aborting when deleting directory: %s, %s", this.id, getStackTrace(ex)));
                 }
             }
             log.error(String.format("Error create directory: %s, %s", this.id, getStackTrace(e)));
+            throw new StrategyException(this.id, String.format("Error create directory: %s", this.id));
         }
-        finally {
-            if(bufferedWriter!=null) {
-                try {
-                    bufferedWriter.close();
-                } catch (IOException e) {
-                    log.error(String.format("Error create directory: %s, %s", this.id, getStackTrace(e)));
-                }
-            }
-        }
-        return false;
     }
 
-    private boolean deleteStrategyPy()
+    private void deleteStrategyPy()
     {
         try{
             File file = new File(RunningStrategy.CACHE_DIR + this.id);
             if(file.exists()) {
                 FileUtils.deleteDirectory(file);
             }
-            return true;
         } catch (IOException e) {
             log.error(String.format("Error delete directory: %s, %s", this.id, getStackTrace(e)));
         }
-        return false;
     }
 
     private static String getStackTrace(Exception e) {

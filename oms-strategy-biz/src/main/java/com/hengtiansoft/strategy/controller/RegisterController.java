@@ -1,19 +1,27 @@
 package com.hengtiansoft.strategy.controller;
 
-import com.github.dockerjava.api.DockerClient;
 import com.hengtiansoft.strategy.bo.account.Account;
 import com.hengtiansoft.strategy.bo.engine.StrategyEngine;
 import com.hengtiansoft.strategy.bo.strategy.RunningStrategy;
-import com.hengtiansoft.strategy.feign.TradeService;
-import com.hengtiansoft.strategy.model.Strategy;
+import com.hengtiansoft.strategy.model.StrategyModel;
+import com.hengtiansoft.strategy.service.RunningStrategyService;
+import com.hengtiansoft.strategy.service.StrategyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 public class RegisterController {
+
+    @Autowired
+    private StrategyService strategyService;
+
+    @Autowired
+    private RunningStrategyService runningStrategyService;
 
     @Autowired
     private StrategyEngine strategyEngine;
@@ -23,45 +31,39 @@ public class RegisterController {
     {
         System.out.println("strategyId:"+strategyId+",codeId:"+codeId+",userId:"+userId+",accounts:"+ Arrays.toString(accounts));
         RunningStrategy runningStrategy = null;
+        Stack<String> rollbackStack = new Stack<>();
         try {
-            // todo：去判定是否能注册这几个accounts
-            // todo：策略信息加入到数据库
-
-            // todo：从数据库获取策略code
-            Strategy strategy = new Strategy(codeId, userId,"from hquant import *\n" +
-                    "\n" +
-                    "\n" +
-                    "class Strategy(BaseStrategy):\n" +
-                    "    def initialize(self):\n" +
-                    "        self.subscribe(\"600002\")\n" +
-                    "        self.subscribe(\"600003\")\n" +
-                    "\n" +
-                    "    def handle_tick(self, tick):\n" +
-                    "        if tick.open < tick.close:\n" +
-                    "            self.buy(0, '600002', 200)\n" +
-                    "        elif tick.open > tick.close:\n" +
-                    "            self.sell(0, '600003', 300)\n" +
-                    "        Strategy.last_tick = tick\n");
+            // 1. 从数据库获取策略code
+            StrategyModel strategy = strategyService.select(codeId);
+            // 2. 创建runningStrategy对象
             runningStrategy = new RunningStrategy(strategyId, strategy);
             for(String account : accounts) {
                 runningStrategy.addAccount(new Account(account));
             }
+            // 3. runningStrategy对象插入数据库（需要回滚）
+            runningStrategyService.insertRunningStrategy(
+                    Stream.of(accounts).collect(Collectors.toList()),
+                    runningStrategy.getRunningStrategyModel()
+            );
+            rollbackStack.push("deleteRunningStrategy");
+            // 4. runningStrategy对象初始化（需要回滚）
             runningStrategy.init();
-
-            // 加入到strategyMap
+            rollbackStack.push("destroy");
+            // 5. 运行initialize方法（需要回滚）
+            runningStrategy.initialize();
+            rollbackStack.push("destroy");
+            // 6. 加入StrategyMap（需要回滚）
             strategyEngine.getStrategyMap().put(strategyId, runningStrategy);
-            strategyEngine.getEventBus().register(runningStrategy);
+            // 7. 注册到策略引擎中（需要回滚）
+            runningStrategy.register(strategyEngine.getEventBus());
+            // 8. 修改状态isUp为true（需要回滚）
+            runningStrategyService.turnUp(runningStrategy.getId());
+            // 9. 成功添加，返回true
             return true;
         }
         catch (Exception e) {
-            if(runningStrategy!=null) {
-                strategyEngine.getEventBus().unregister(runningStrategy);
-                strategyEngine.getStrategyMap().remove(strategyId);
-                runningStrategy.destroy();
-            }
-            // todo：策略信息从数据库删除
+            // todo:回滚
         }
-
         return false;
     }
 
