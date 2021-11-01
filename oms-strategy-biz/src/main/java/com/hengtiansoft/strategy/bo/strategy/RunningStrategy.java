@@ -7,6 +7,7 @@ import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.hengtiansoft.eventbus.SubscribeEvent;
 import com.hengtiansoft.strategy.bo.docker.callback.LogResultCallback;
 import com.hengtiansoft.strategy.config.py4j.GatewayProperties;
+import com.hengtiansoft.strategy.controller.RegisterController;
 import com.hengtiansoft.strategy.exception.StrategyException;
 import com.hengtiansoft.strategy.bo.strategy.event.TickEvent;
 import com.hengtiansoft.strategy.model.RunningStrategyModel;
@@ -18,9 +19,6 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
 
 @Slf4j
@@ -145,26 +143,40 @@ public class RunningStrategy extends BaseStrategy {
                     .exec(new LogResultCallback());
             resultCallback.awaitCompletion();
             // 4. 储存到数据库
-            // todo:存日志到数据库
-            System.out.println(resultCallback.getResult());
+            String out;
+            if ((out=resultCallback.getResult())!=null) {
+                // todo:存日志到数据库
+                System.out.println(out);
+            }
+            String err;
+            if ((err=resultCallback.getError())!=null) {
+                // todo:存日志到数据库
+                System.out.println(err);
+            }
+            if (resultCallback.isError()) {
+                throw new StrategyException(this.id, String.format("Python script error: %s", this.id));
+            }
             return true;
         } catch (Exception e) {
-            try {
-                init();
-            } catch (Exception ex) {
-                log.error(String.format("Error init when HandleTick: %s", this.id));
-            }
             log.error(String.format("Cannot execute command: %s, %s", this.id, getStackTrace(e)));
         }
         return false;
     }
 
     private GatewayProperties getGatewayProperties() {
+        return getBeanByType(GatewayProperties.class);
+    }
+
+    private RegisterController getRegisterController() {
+        return getBeanByType(RegisterController.class);
+    }
+
+    private <T> T getBeanByType(Class<T> clazz) {
         WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
         if(wac==null) {
             throw new StrategyException(this.id, String.format("Null WebApplicationContext: %s", this.id));
         }
-        return wac.getBean(GatewayProperties.class);
+        return wac.getBean(clazz);
     }
 
     public void initialize() {
@@ -193,7 +205,8 @@ public class RunningStrategy extends BaseStrategy {
                 tickEvent.toString()
         );
         if(!execResult) {
-            throw new StrategyException(this.id, String.format("Cannot handleTick: %s", this.id));
+            log.error(String.format("Cannot handleTick: %s", this.id));
+
         }
     }
 

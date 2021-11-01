@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb938665-b47b-489a-9419-7a2d98a0cf01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/service/RunningStrategyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/service/StrategyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/mapper/RunningStrategyMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code-test/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/code-test/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/EventBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/EventBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/RunningStrategys.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/RunningStrategys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/ctl.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/blind/ctl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/event/BarEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/event/BarEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/event/TickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/event/TickEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/RunningStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/RunningStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/mapper/RunningStrategyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/mapper/RunningStrategyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/mapper/StrategyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/mapper/StrategyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/mapper/StrategyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oms-strategy-biz/src/main/resources/mapper/StrategyMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,26 +24,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/RunningStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="187" column="25" lean-forward="true" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
+            <state relative-caret-position="262">
+              <caret line="209" column="9" lean-forward="true" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2077#2078#0" expanded="true" />
-                <element signature="e#2107#2108#0" expanded="true" />
+                <element signature="e#4370#4371#0" expanded="true" />
                 <element signature="e#4429#4430#0" expanded="true" />
+                <element signature="e#6274#6275#0" expanded="true" />
+                <element signature="e#6335#6336#0" expanded="true" />
+                <element signature="e#6618#6619#0" expanded="true" />
+                <element signature="e#6673#6674#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code-test/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+            <state relative-caret-position="166">
+              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,12 +57,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+            <state relative-caret-position="-1513">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2749#2750#0" expanded="true" />
-                <element signature="e#2809#2810#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,12 +69,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/service/RunningStrategyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="25" column="37" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="37" />
+            <state relative-caret-position="102">
+              <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1287#1288#0" expanded="true" />
-                <element signature="e#1360#1361#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,7 +148,6 @@
         <option value="$PROJECT_DIR$/eventbus/pom.xml" />
         <option value="$PROJECT_DIR$/code-test/pom.xml" />
         <option value="$PROJECT_DIR$/code-test/src/main/java/LogResultCallback.java" />
-        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/docker/callback/LogResultCallback.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/event/TickEvent.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/config/py4j/GatewayConfiguration.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/account/Account.java" />
@@ -189,9 +175,10 @@
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/service/StrategyService.java" />
         <option value="$PROJECT_DIR$/eventbus/src/main/java/com/hengtiansoft/eventbus/EventBus.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/service/RunningStrategyService.java" />
+        <option value="$PROJECT_DIR$/code-test/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/docker/callback/LogResultCallback.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java" />
         <option value="$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/RunningStrategy.java" />
-        <option value="$PROJECT_DIR$/code-test/src/main/java/Main.java" />
       </list>
     </option>
   </component>
@@ -214,7 +201,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -404,6 +390,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -415,7 +402,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1635703845706" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1635763606820" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Git/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -604,12 +591,13 @@
       <workItem from="1635490216651" duration="8752000" />
       <workItem from="1635577300820" duration="26804000" />
       <workItem from="1635657132047" duration="4924000" />
-      <workItem from="1635662070185" duration="12468000" />
+      <workItem from="1635662070185" duration="13392000" />
+      <workItem from="1635746989146" duration="10695000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290688000" />
+    <option name="totallyTimeSpent" value="302307000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -624,7 +612,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2829426" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28779304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -640,7 +628,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969433" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49717057" visible="true" weight="0.3250444" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49717057" visible="true" weight="0.3250444" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50282943" side_tool="true" weight="0.3250444" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3285968" />
@@ -711,27 +699,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/docker-java/docker-java-api/3.2.12/docker-java-api-3.2.12-sources.jar!/com/github/dockerjava/api/command/ExecCreateCmd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="129" column="30" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oms-strategy-biz/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -1068,49 +1035,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/docker-java/docker-java-core/3.2.12/docker-java-core-3.2.12-sources.jar!/com/github/dockerjava/core/command/ExecStartResultCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/docker/callback/LogResultCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding>
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="271" column="6" selection-start-line="271" selection-start-column="6" selection-end-line="271" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/service/RunningStrategyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="25" column="37" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="37" />
+        <state relative-caret-position="102">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1360#1361#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2749#2750#0" expanded="true" />
-            <element signature="e#2809#2810#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/RunningStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="187" column="25" lean-forward="true" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2107#2108#0" expanded="true" />
-            <element signature="e#4429#4430#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code-test/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+        <state relative-caret-position="166">
+          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/controller/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1513">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oms-strategy-biz/src/main/java/com/hengtiansoft/strategy/bo/strategy/RunningStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="209" column="9" lean-forward="true" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4370#4371#0" expanded="true" />
+            <element signature="e#4429#4430#0" expanded="true" />
+            <element signature="e#6274#6275#0" expanded="true" />
+            <element signature="e#6335#6336#0" expanded="true" />
+            <element signature="e#6618#6619#0" expanded="true" />
+            <element signature="e#6673#6674#0" expanded="true" />
           </folding>
         </state>
       </provider>

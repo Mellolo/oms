@@ -6,6 +6,7 @@ import com.hengtiansoft.strategy.bo.strategy.RunningStrategy;
 import com.hengtiansoft.strategy.model.StrategyModel;
 import com.hengtiansoft.strategy.service.RunningStrategyService;
 import com.hengtiansoft.strategy.service.StrategyService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 @RestController
 public class RegisterController {
 
@@ -51,18 +53,53 @@ public class RegisterController {
             rollbackStack.push("destroy");
             // 5. 运行initialize方法（需要回滚）
             runningStrategy.initialize();
-            rollbackStack.push("destroy");
-            // 6. 加入StrategyMap（需要回滚）
-            strategyEngine.getStrategyMap().put(strategyId, runningStrategy);
-            // 7. 注册到策略引擎中（需要回滚）
+            // 6. 注册到策略引擎中（需要回滚）
             runningStrategy.register(strategyEngine.getEventBus());
+            rollbackStack.push("unregister");
+            // 7. 加入StrategyMap（需要回滚）
+            strategyEngine.getStrategyMap().put(strategyId, runningStrategy);
+            rollbackStack.push("remove");
             // 8. 修改状态isUp为true（需要回滚）
-            runningStrategyService.turnUp(runningStrategy.getId());
+            runningStrategyService.turnUp(strategyId);
+            rollbackStack.push("turnDown");
             // 9. 成功添加，返回true
             return true;
         }
         catch (Exception e) {
-            // todo:回滚
+            while(!rollbackStack.empty()) {
+                switch (rollbackStack.pop()) {
+                    case "turnDown": {
+                        runningStrategyService.turnDown(strategyId);
+                        break;
+                    }
+                    case "remove": {
+                        strategyEngine.getStrategyMap().remove(strategyId);
+                        break;
+                    }
+                    case "unregister": {
+                        if(runningStrategy!=null) {
+                            runningStrategy.unregister(strategyEngine.getEventBus());
+                        }
+                        break;
+                    }
+                    case "destroy": {
+                        if(runningStrategy!=null) {
+                            runningStrategy.destroy();
+                        }
+                        break;
+                    }
+                    case "deleteRunningStrategy": {
+                        if(runningStrategy!=null) {
+                            runningStrategyService.deleteRunningStrategy(strategyId);
+                        }
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+            }
+            log.error(String.format("Register abort: %s", strategyId));
         }
         return false;
     }
@@ -71,5 +108,12 @@ public class RegisterController {
     public void unregister(String strategyId)
     {
         System.out.println("strategyId:"+strategyId);
+        runningStrategyService.turnDown(strategyId);
+        RunningStrategy runningStrategy = strategyEngine.getStrategyMap().remove(strategyId);
+        if(runningStrategy!=null) {
+            runningStrategy.unregister(strategyEngine.getEventBus());
+            runningStrategy.destroy();
+        }
+        runningStrategyService.deleteRunningStrategy(strategyId);
     }
 }
