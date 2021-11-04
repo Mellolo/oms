@@ -38,34 +38,10 @@ public class Main {
 
         DockerClient dockerClient = DockerClientImpl.getInstance(config, httpClient);
 
-        try {
-            // 1. 获取容器运行状态
-            InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd("py-docker").exec();
-            Boolean isRunning = inspectContainerResponse.getState().getRunning();
-            // 2. 开启容器
-            if(BooleanUtils.isFalse(isRunning)) {
-                dockerClient.startContainerCmd("py-docker").exec();
-            }
-            // 3. 执行命令
-            ExecCreateCmdResponse execCreateCmdResponse = dockerClient
-                    .execCreateCmd("py-docker")
-                    .withAttachStdout(true)
-                    .withAttachStderr(true)
-                    .withUser("root")
-                    .withWorkingDir("/home/strategy_scripts/")
-                    .withCmd("python",
-                            "./handleTick.py")
-                    .exec();
-            ExecStartResultCallback resultCallback = dockerClient
-                    .execStartCmd(execCreateCmdResponse.getId())
-                    .exec(new ExecStartResultCallback(null,System.err));
-            resultCallback.awaitCompletion();
-            // 4. 储存到数据库
-            // todo:存日志到数据库
-            //System.out.println(resultCallback.getResult());
-            //return true;
-        } catch (Exception e) {
-        }
+        dockerClient.copyArchiveToContainerCmd("py-docker")
+                .withHostResource("./strategy_cache/strategy.py")
+                .withRemotePath("/home/strategy_scripts/strategy/")
+                .exec();
 
     }
 

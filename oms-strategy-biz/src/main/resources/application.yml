@@ -25,14 +25,19 @@ server:
   port: 8080
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
   client:
+    instance-info-replication-interval-seconds: 1
     service-url:
-      defaultZone: http://localhost:12345/eureka/
+      defaultZone: http://127.0.0.1:12345/eureka/
 
 py4j:
-  port: 25333
+  port: 25335
   pythonPort: 25334
-  defaultAddress: 10.112.173.113
+  defaultAddress: 10.112.173.194
 
 docker:
   client:

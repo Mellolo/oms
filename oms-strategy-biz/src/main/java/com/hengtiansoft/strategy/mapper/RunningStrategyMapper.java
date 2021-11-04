@@ -21,6 +21,8 @@ public interface RunningStrategyMapper {
 
     void updateIsUp(@Param("id") String id, @Param("isUp") boolean isUp);
 
+    List<String> selectAccountBinding(String runningStrategyId);
+
     void insertAccountBinding(@Param("accountIds") List<String> accountIds, @Param("runningStrategyId") String runningStrategyId);
 
     void deleteAccountBinding(String runningStrategyId);

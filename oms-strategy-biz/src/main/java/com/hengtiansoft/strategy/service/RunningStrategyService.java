@@ -1,7 +1,9 @@
 package com.hengtiansoft.strategy.service;
 
 import com.hengtiansoft.strategy.mapper.RunningStrategyMapper;
+import com.hengtiansoft.strategy.mapper.StrategyLogMapper;
 import com.hengtiansoft.strategy.model.RunningStrategyModel;
+import com.hengtiansoft.strategy.model.StrategyLogModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,13 @@ public class RunningStrategyService {
     @Qualifier("runningStrategyMapper")
     RunningStrategyMapper runningStrategyMapper;
 
+    @Autowired
+    @Qualifier("strategyLogMapper")
+    StrategyLogMapper strategyLogMapper;
+
     @Transactional(rollbackFor = {Exception.class, Error.class})
     public void insertRunningStrategy(List<String> accounts, RunningStrategyModel runningStrategyModel) {
+        strategyLogMapper.insert(new StrategyLogModel(runningStrategyModel.getId(), runningStrategyModel.getUserId(), "=====STRATEGY LOG=====\n"));
         runningStrategyMapper.insertAccountBinding(accounts, runningStrategyModel.getId());
         runningStrategyMapper.insert(runningStrategyModel);
     }
@@ -26,6 +33,11 @@ public class RunningStrategyService {
     public void deleteRunningStrategy(String runningStrategyId) {
         runningStrategyMapper.delete(runningStrategyId);
         runningStrategyMapper.deleteAccountBinding(runningStrategyId);
+    }
+
+    @Transactional(rollbackFor = {Exception.class, Error.class})
+    public List<String> selectAccountBinding(String runningStrategyId) {
+        return runningStrategyMapper.selectAccountBinding(runningStrategyId);
     }
 
     @Transactional(rollbackFor = {Exception.class, Error.class})

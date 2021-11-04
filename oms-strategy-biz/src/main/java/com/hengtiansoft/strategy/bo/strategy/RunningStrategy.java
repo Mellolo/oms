@@ -12,9 +12,14 @@ import com.hengtiansoft.strategy.exception.StrategyException;
 import com.hengtiansoft.strategy.bo.strategy.event.TickEvent;
 import com.hengtiansoft.strategy.model.RunningStrategyModel;
 import com.hengtiansoft.strategy.model.StrategyModel;
+import com.hengtiansoft.strategy.service.StrategyLogService;
+import com.hengtiansoft.strategy.utils.ApplicationContextUtils;
+import com.hengtiansoft.strategy.utils.ExceptionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -27,7 +32,7 @@ public class RunningStrategy extends BaseStrategy {
     private final static String CACHE_DIR = "strategy_cache/";
     private final static String WORKING_DIR = "/home/strategy_scripts/";
     private final static String CP_DIR = "/home/strategy_scripts/strategy/";
-    private final static String IMAGE_NAME = "hquant:v1";
+    private final static String IMAGE_NAME = "hquant:v2";
 
     private String id;
     private String userId;
@@ -40,13 +45,18 @@ public class RunningStrategy extends BaseStrategy {
         this.id = id;
         this.userId = userId;
         this.code = code;
-        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-        if(wac!=null) {
-            this.dockerClient = wac.getBean(DockerClient.class);
+        ApplicationContext ac = ApplicationContextUtils.getApplicationContext();
+        if(ac!=null) {
+            this.dockerClient = ac.getBean(DockerClient.class);
         }
     }
 
     public RunningStrategy(String id, StrategyModel strategy)
+    {
+        this(id, strategy.getUserId(), strategy.getCode());
+    }
+
+    public RunningStrategy(String id, RunningStrategyModel strategy)
     {
         this(id, strategy.getUserId(), strategy.getCode());
     }
@@ -59,7 +69,7 @@ public class RunningStrategy extends BaseStrategy {
         return this.id;
     }
 
-    public void init() {
+    public synchronized void init() {
         Stack<String> rollbackStack = new Stack<>();
         try {
             // 1. 创建文件（需要回滚）
@@ -99,11 +109,12 @@ public class RunningStrategy extends BaseStrategy {
                     }
                 }
             }
-            throw new StrategyException(this.id, String.format("Cannot init container: %s, %s", this.id, getStackTrace(e)));
+            throw new StrategyException(this.id, String.format("Cannot init container: %s, %s",
+                    this.id, ExceptionUtils.getStackTrace(e)));
         }
     }
 
-    public void destroy() {
+    public synchronized void destroy() {
         try {
             this.dockerClient.killContainerCmd(this.containerId).exec();
         } catch (Exception e) {
@@ -131,7 +142,7 @@ public class RunningStrategy extends BaseStrategy {
             }
             // 3. 执行命令
             ExecCreateCmdResponse execCreateCmdResponse = this.dockerClient
-                    .execCreateCmd("py-docker")
+                    .execCreateCmd(this.containerId)
                     .withAttachStdout(true)
                     .withAttachStderr(true)
                     .withUser("strategy")
@@ -143,22 +154,20 @@ public class RunningStrategy extends BaseStrategy {
                     .exec(new LogResultCallback());
             resultCallback.awaitCompletion();
             // 4. 储存到数据库
+            StrategyLogService strategyLogService = getStrategyLogService();
             String out;
-            if ((out=resultCallback.getResult())!=null) {
-                // todo:存日志到数据库
-                System.out.println(out);
+            if (StringUtils.isNotBlank(out=resultCallback.getResult())) {
+                strategyLogService.append(this.id, out);
             }
             String err;
-            if ((err=resultCallback.getError())!=null) {
-                // todo:存日志到数据库
-                System.out.println(err);
-            }
-            if (resultCallback.isError()) {
+            if (StringUtils.isNotBlank(err=resultCallback.getError())) {
+                strategyLogService.append(this.id, err);
                 throw new StrategyException(this.id, String.format("Python script error: %s", this.id));
             }
             return true;
         } catch (Exception e) {
-            log.error(String.format("Cannot execute command: %s, %s", this.id, getStackTrace(e)));
+            log.error(String.format("Cannot execute command: %s, %s",
+                    this.id, ExceptionUtils.getStackTrace(e)));
         }
         return false;
     }
@@ -171,15 +180,19 @@ public class RunningStrategy extends BaseStrategy {
         return getBeanByType(RegisterController.class);
     }
 
-    private <T> T getBeanByType(Class<T> clazz) {
-        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-        if(wac==null) {
-            throw new StrategyException(this.id, String.format("Null WebApplicationContext: %s", this.id));
-        }
-        return wac.getBean(clazz);
+    private StrategyLogService getStrategyLogService() {
+        return getBeanByType(StrategyLogService.class);
     }
 
-    public void initialize() {
+    private <T> T getBeanByType(Class<T> clazz) {
+        ApplicationContext ac = ApplicationContextUtils.getApplicationContext();
+        if(ac==null) {
+            throw new StrategyException(this.id, String.format("Null WebApplicationContext: %s", this.id));
+        }
+        return ac.getBean(clazz);
+    }
+
+    public synchronized void initialize() {
         GatewayProperties properties = getGatewayProperties();
         boolean execResult = execDockerCmd(
                 "python",
@@ -194,23 +207,27 @@ public class RunningStrategy extends BaseStrategy {
     }
 
     @SubscribeEvent
-    public void handleTick(TickEvent tickEvent) {
-        GatewayProperties properties = getGatewayProperties();
-        boolean execResult = execDockerCmd(
-                "python",
-                "./handleTick.py",
-                properties.getDefaultAddress(),
-                String.valueOf(properties.getPort()),
-                this.id,
-                tickEvent.toString()
-        );
-        if(!execResult) {
-            log.error(String.format("Cannot handleTick: %s", this.id));
-
+    public synchronized void handleTick(TickEvent tickEvent) {
+        try {
+            GatewayProperties properties = getGatewayProperties();
+            boolean execResult = execDockerCmd(
+                    "python",
+                    "./handleTick.py",
+                    properties.getDefaultAddress(),
+                    String.valueOf(properties.getPort()),
+                    this.id,
+                    tickEvent.toString()
+            );
+            if(!execResult) {
+                throw new StrategyException(this.id, String.format("Cannot handleTick: %s", this.id));
+            }
+        } catch (Exception e) {
+            RegisterController registerController = getRegisterController();
+            registerController.unregister(this.id);
         }
     }
 
-    private void createStrategyPy()
+    private synchronized void createStrategyPy()
     {
         File file = null;
         BufferedWriter bufferedWriter = null;
@@ -223,28 +240,30 @@ public class RunningStrategy extends BaseStrategy {
             bufferedWriter.write(this.code);
             bufferedWriter.close();
         }
-        catch(IOException e) {
+        catch(Exception e) {
             // 回滚文件夹创建
             if(bufferedWriter!=null) {
                 try {
                     bufferedWriter.close();
                 } catch (IOException ex) {
-                    log.error(String.format("Error abort directory creating when closing bufferedWriter: %s, %s", this.id, getStackTrace(ex)));
+                    log.error(String.format("Error abort directory creating when closing bufferedWriter: %s, %s",
+                            this.id, ExceptionUtils.getStackTrace(ex)));
                 }
             }
             if(file.exists()) {
                 try {
                     FileUtils.deleteDirectory(file);
                 } catch (IOException ex) {
-                    log.error(String.format("Error abort directory creating aborting when deleting directory: %s, %s", this.id, getStackTrace(ex)));
+                    log.error(String.format("Error abort directory creating aborting when deleting directory: %s, %s",
+                            this.id, ExceptionUtils.getStackTrace(ex)));
                 }
             }
-            log.error(String.format("Error create directory: %s, %s", this.id, getStackTrace(e)));
+            log.error(String.format("Error create directory: %s, %s", this.id, ExceptionUtils.getStackTrace(e)));
             throw new StrategyException(this.id, String.format("Error create directory: %s", this.id));
         }
     }
 
-    private void deleteStrategyPy()
+    private synchronized void deleteStrategyPy()
     {
         try{
             File file = new File(RunningStrategy.CACHE_DIR + this.id);
@@ -252,14 +271,7 @@ public class RunningStrategy extends BaseStrategy {
                 FileUtils.deleteDirectory(file);
             }
         } catch (IOException e) {
-            log.error(String.format("Error delete directory: %s, %s", this.id, getStackTrace(e)));
+            log.error(String.format("Error delete directory: %s, %s", this.id, ExceptionUtils.getStackTrace(e)));
         }
-    }
-
-    private static String getStackTrace(Exception e) {
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        e.printStackTrace(pw);
-        return sw.toString();
     }
 }

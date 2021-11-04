@@ -37,10 +37,6 @@
         UPDATE running_strategy SET is_up = #{isUp} WHERE id = #{id}
     </update>
 
-    <select id="selectAccountBinding" parameterType="String" resultType="String">
-        Select account_id from account_running_strategy where running_strategy_id = #{runningStrategyId}
-    </select>
-
     <insert id="insertAccountBinding" >
         insert into account_running_strategy
         (account_id, running_strategy_id)

@@ -8,7 +8,13 @@ spring:
 eureka:
   instance:
     hostname: localhost
+  server:
+    enable-self-preservation: false
+    response-cache-update-interval-ms: 200 #writeRead缓存定时同步到ReadOnly的缓存
+    eviction-interval-timer-in-ms: 200 #定时检查心跳（和上面的最好一样）
   client:
+    healthcheck:
+      enabled: true
     register-with-eureka: false
     fetch-registry: false
     service-url:

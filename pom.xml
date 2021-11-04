@@ -10,7 +10,7 @@
         <module>oms-trade-biz</module>
         <module>oms-strategy-gateway</module>
         <module>code-test</module>
-        <module>oms-strategy-loadbalance</module>
+        <module>oms-strategy-master</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

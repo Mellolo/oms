@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hengtiansoft.strategy.mapper.StrategyLogMapper">
+
+    <select id="select" parameterType="String" resultMap="StrategyLogResultMap">
+        Select id, user_id, strategy_log from running_strategy_log where id = #{id}
+    </select>
+    <resultMap id="StrategyLogResultMap" type="com.hengtiansoft.strategy.model.StrategyLogModel" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="strategy_log" property="log" typeHandler="com.hengtiansoft.strategy.model.handler.BlobStringHandler"/>
+    </resultMap>
+
+    <select id="selectByUserId" parameterType="String" resultMap="StrategyLogResultMap">
+        Select id, user_id, strategy_log from running_strategy_log where user_id = #{userId}
+    </select>
+
+    <insert id="insert" parameterMap="StrategyLogParameterMap">
+        insert into running_strategy_log (id, user_id, strategy_log) values( #{id}, #{userId}, #{log} )
+    </insert>
+    <parameterMap id="StrategyLogParameterMap" type="com.hengtiansoft.strategy.model.StrategyLogModel">
+        <parameter property="id" resultMap="StrategyLogResultMap" />
+        <parameter property="userId" resultMap="StrategyLogResultMap" />
+        <parameter property="log" resultMap="StrategyLogResultMap" />
+    </parameterMap>
+
+    <update id="append" >
+        UPDATE running_strategy_log SET strategy_log = CONCAT(cast(strategy_log as char),#{log}) WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="String" >
+        Delete from running_strategy_log where id = #{id}
+    </delete>
+
+</mapper>

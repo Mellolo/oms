@@ -13,18 +13,13 @@ public class LogResultCallback extends ResultCallbackTemplate<LogResultCallback,
 
     private OutputStream out = new ByteArrayOutputStream();
     private OutputStream err = new ByteArrayOutputStream();
-    private boolean isError;
 
     public String getResult() {
         return out.toString();
     }
 
     public String getError() {
-        return out.toString();
-    }
-
-    public boolean isError() {
-        return isError;
+        return err.toString();
     }
 
     @Override
@@ -40,7 +35,6 @@ public class LogResultCallback extends ResultCallbackTemplate<LogResultCallback,
                         }
                         break;
                     case STDERR:
-                        isError = true;
                         if (err != null) {
                             err.write(frame.getPayload());
                             err.flush();

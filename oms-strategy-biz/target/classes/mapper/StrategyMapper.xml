@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hengtiansoft.strategy.mapper.StrategyMapper">
+
+    <select id="select" parameterType="int" resultMap="StrategyResultMap">
+        Select id, user_id, content from strategy where id = #{id}
+    </select>
+    <resultMap id="StrategyResultMap" type="com.hengtiansoft.strategy.model.StrategyModel" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="content" property="code" typeHandler="com.hengtiansoft.strategy.model.handler.BlobStringHandler"/>
+    </resultMap>
+
+    <select id="selectByUserId" parameterType="String" resultMap="StrategyResultMap">
+        Select id, user_id, content from strategy where user_id = #{userId}
+    </select>
+
+    <insert id="insert" parameterMap="StrategyParameterMap">
+        insert into strategy (id, user_id, content) values( #{id}, #{userId}, #{code} )
+    </insert>
+    <parameterMap id="StrategyParameterMap" type="com.hengtiansoft.strategy.model.StrategyModel">
+        <parameter property="id" resultMap="StrategyResultMap" />
+        <parameter property="userId" resultMap="StrategyResultMap" />
+        <parameter property="code" resultMap="StrategyResultMap" />
+    </parameterMap>
+
+    <delete id="delete" parameterType="int" >
+        Delete from strategy where id = #{id}
+    </delete>
+
+</mapper>

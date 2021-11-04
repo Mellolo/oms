@@ -6,19 +6,38 @@ elasticsearch:
 spring:
   application:
     name: oms-strategy-biz
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/oms?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC #Asia/Shanghai
+    username: oms
+    password: oms
+    druid:
+      initial-size: 10
+      max-active: 11
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.hengtiansoft.strategy.model
 
 server:
   port: 8080
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
   client:
+    instance-info-replication-interval-seconds: 1
     service-url:
-      defaultZone: http://localhost:12345/eureka/
+      defaultZone: http://127.0.0.1:12345/eureka/
 
 py4j:
-  port: 25333
+  port: 25335
   pythonPort: 25334
-  defaultAddress: 10.112.173.113
+  defaultAddress: 10.112.173.194
 
 docker:
   client:

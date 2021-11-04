@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/oms-strategy-biz" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oms-strategy-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oms-strategy-loadbalance" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oms-strategy-master" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oms-trade-biz" charset="UTF-8" />
   </component>
 </project>
