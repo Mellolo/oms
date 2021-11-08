@@ -73,6 +73,10 @@ public class EventBus{
         }
     }
 
+    public void clear() {
+        subscribers.clear();
+    }
+
     void register(BaseListener listener) {
         subscribers.register(listener);
     }

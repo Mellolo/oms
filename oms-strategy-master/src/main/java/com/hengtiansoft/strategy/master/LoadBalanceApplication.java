@@ -7,11 +7,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients("com.hengtiansoft.strategyfacade.feign")
+@EnableFeignClients("com.hengtiansoft.strategy.master.feign")
 public class LoadBalanceApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(LoadBalanceApplication.class, args);
     }
 

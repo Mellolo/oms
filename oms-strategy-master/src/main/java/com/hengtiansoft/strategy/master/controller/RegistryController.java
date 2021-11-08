@@ -1,5 +1,7 @@
 package com.hengtiansoft.strategy.master.controller;
 
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class RegistryController {
@@ -15,17 +18,22 @@ public class RegistryController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private IRule rule;
+
     @GetMapping("services")
-    public List<String> getEurekaServices(){
+    public List<String> getEurekaServices() {
         List<String> services = new ArrayList<>();
-        List<String> serviceNames = discoveryClient.getServices();
-        for(String serviceName : serviceNames){
-            List<ServiceInstance> serviceInstances = discoveryClient.getInstances(serviceName);
-            for(ServiceInstance serviceInstance : serviceInstances){
-                services.add(String.format("%s:%s",serviceName,serviceInstance.getUri()));
-            }
+        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("oms-strategy-biz");
+        for(ServiceInstance serviceInstance : serviceInstances) {
+            services.add(serviceInstance.getHost()+":"+serviceInstance.getPort());
         }
         return services;
+    }
+
+    @GetMapping("instances")
+    public List<String> getInstances() {
+        return rule.getLoadBalancer().getReachableServers().stream().map(Server::getHostPort).collect(Collectors.toList());
     }
 
 }

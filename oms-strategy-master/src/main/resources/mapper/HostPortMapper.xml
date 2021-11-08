@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hengtiansoft.strategy.mapper.HostPortMapper">
+
+    <select id="selectStrategyHostport" resultMap="HostportCountResultMap">
+        SELECT host_port, count(host_port) as num from strategy_hostport where host_port in
+        (
+        <foreach collection="hostPorts" item="hostPort" index= "index" separator =",">
+            #{hostPort}
+        </foreach >
+        )
+        group by host_port
+    </select>
+    <resultMap id="HostportCountResultMap" type="com.hengtiansoft.strategy.master.model.HostPortCountModel" >
+        <result column="host_port" property="hostPort" jdbcType="VARCHAR" />
+        <result column="num" property="num" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="selectDuplicateHostport" resultMap="HostportCountResultMap">
+        SELECT host_port, count(host_port) as num from duplicate_hostport where host_port in
+        (
+        <foreach collection="hostPorts" item="hostPort" index= "index" separator =",">
+            #{hostPort}
+        </foreach >
+        )
+        group by host_port
+    </select>
+
+    <delete id="deleteStrategyHostport">
+        Delete from strategy_hostport where host_port in
+        (
+        <foreach collection="hostPorts" item="hostPort" index= "index" separator =",">
+            #{hostPort}
+        </foreach >
+        )
+    </delete>
+
+    <delete id="deleteDuplicateHostport">
+        Delete from duplicate_hostport where host_port in
+        (
+        <foreach collection="hostPorts" item="hostPort" index= "index" separator =",">
+            #{hostPort}
+        </foreach >
+        )
+    </delete>
+
+</mapper>

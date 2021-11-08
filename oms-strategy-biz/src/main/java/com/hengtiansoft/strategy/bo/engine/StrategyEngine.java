@@ -6,15 +6,36 @@ import com.hengtiansoft.strategy.exception.StrategyException;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class StrategyEngine {
     private Map<String, RunningStrategy> strategyMap;
     private EventBus eventBus;
     private Map<String, RunningStrategy> duplicateMap = new ConcurrentHashMap<>();
+    private Map<String, ReentrantLock> lockMap = new ConcurrentHashMap<>();
 
     public StrategyEngine(Map<String, RunningStrategy> strategyMap, EventBus eventBus) {
         this.strategyMap = strategyMap;
         this.eventBus = eventBus;
+    }
+
+    public void clear() {
+        eventBus.clear();
+        strategyMap.clear();
+        duplicateMap.clear();
+        lockMap.clear();
+    }
+
+    public boolean contains(String strategyId) {
+        return strategyMap.containsKey(strategyId) || duplicateMap.containsKey(strategyId);
+    }
+
+    public boolean containsStrategy(String strategyId) {
+        return strategyMap.containsKey(strategyId);
+    }
+
+    public boolean containsDuplicate(String strategyId) {
+        return duplicateMap.containsKey(strategyId);
     }
 
     public void putStrategy(String strategyId, RunningStrategy runningStrategy) {
@@ -29,8 +50,8 @@ public class StrategyEngine {
         duplicateMap.put(strategyId, runningStrategy);
     }
 
-    public void removeDuplicate(String strategyId) {
-        duplicateMap.remove(strategyId);
+    public RunningStrategy removeDuplicate(String strategyId) {
+        return duplicateMap.remove(strategyId);
     }
 
     public void registerStrategy(String strategyId) {
@@ -50,29 +71,35 @@ public class StrategyEngine {
         }
     }
 
-    public boolean turnStrategy2Dupliacate(String strategyId) {
+    public void turnStrategy2Duplicate(String strategyId) {
         RunningStrategy runningStrategy = strategyMap.get(strategyId);
         if(runningStrategy!=null) {
             runningStrategy.unregister(eventBus);
             strategyMap.remove(strategyId);
             duplicateMap.put(strategyId, runningStrategy);
-            return true;
-        }
-        else {
-            return false;
         }
     }
 
-    public boolean turnDupliacate2Strategy(String strategyId) {
+    public void turnDuplicate2Strategy(String strategyId) {
         RunningStrategy runningStrategy = duplicateMap.get(strategyId);
         if(runningStrategy!=null) {
             duplicateMap.remove(strategyId);
             strategyMap.put(strategyId, runningStrategy);
             runningStrategy.register(eventBus);
-            return true;
         }
         else {
-            return false;
+            throw new StrategyException(strategyId, "Error turnDuplicate2Strategy");
         }
+    }
+
+    public ReentrantLock getLock(String strategyId) {
+        if(!lockMap.containsKey(strategyId)) {
+            lockMap.computeIfAbsent(strategyId, k->new ReentrantLock());
+        }
+        return lockMap.get(strategyId);
+    }
+
+    public void deleteLock(String strategyId) {
+        lockMap.remove(strategyId);
     }
 }

@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "spring.redis.oms-redisson",
+      "type": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties",
+      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.redis.oms-redisson.cluster",
+      "type": "java.lang.String",
+      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
+    },
+    {
+      "name": "spring.redis.oms-redisson.nodes",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
+    },
+    {
+      "name": "spring.redis.oms-redisson.single",
+      "type": "java.lang.String",
+      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
+    }
+  ],
+  "hints": []
+}

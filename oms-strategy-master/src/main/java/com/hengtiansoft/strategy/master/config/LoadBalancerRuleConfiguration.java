@@ -21,11 +21,11 @@ public class LoadBalancerRuleConfiguration {
 
     public static class ConsistentHashRule extends AbstractLoadBalancerRule {
 
-        private final IRule DEFAULT_RULE = new RoundRobinRule(getLoadBalancer());
+        private final IRule DEFAULT_RULE = new RoundRobinRule();
 
         private Logger log = LoggerFactory.getLogger(ConsistentHashRule.class);
 
-        private Server choose(ILoadBalancer lb, String strategyId) {
+        private Server choose(ILoadBalancer lb, String hostPort) {
             if (lb == null) {
                 log.warn("no load balancer");
                 return null;
@@ -43,11 +43,13 @@ public class LoadBalancerRuleConfiguration {
                     return null;
                 }
 
-                int hashcode = strategyId.hashCode();
-                //int model = Hashing.consistentHash(hashcode, serverCount); //一致性哈希，直接返回第几个数
-                int model = 1;
+                for(Server s: allServers) {
+                    if (s.getHostPort().equals(hostPort)) {
+                        server = s;
+                        break;
+                    }
+                }
 
-                server = allServers.get(model);
 
                 if (server == null) {
                     /* Transient. */
@@ -73,11 +75,12 @@ public class LoadBalancerRuleConfiguration {
         @Override
         public Server choose(Object key) {
             //获取请求strategyId
-            String strategyId = StrategyUtils.getStrategyId();
-            if(StringUtils.isNotBlank(strategyId)) {
-                return choose(getLoadBalancer(), strategyId);
+            String hostPort = StrategyUtils.getHostPort();
+            if(StringUtils.isNotBlank(hostPort)) {
+                return choose(getLoadBalancer(), hostPort);
             }
             else {
+                DEFAULT_RULE.setLoadBalancer(getLoadBalancer());
                 return DEFAULT_RULE.choose(key);
             }
         }

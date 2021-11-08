@@ -2,13 +2,13 @@ package com.hengtiansoft.strategy.master.utils;
 
 public class StrategyUtils {
 
-    private static final ThreadLocal<String> strategyIdHolder = new ThreadLocal<>();
+    private static final ThreadLocal<String> hostPortHolder = new ThreadLocal<>();
 
-    public static String getStrategyId() {
-        return strategyIdHolder.get();
+    public static String getHostPort() {
+        return hostPortHolder.get();
     }
 
-    public static void setStrategyId(String strategyId) {
-        strategyIdHolder.set(strategyId);
+    public static void setHostPort(String hostPort) {
+        hostPortHolder.set(hostPort);
     }
 }

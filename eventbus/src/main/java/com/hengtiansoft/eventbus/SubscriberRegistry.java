@@ -49,6 +49,10 @@ final class SubscriberRegistry {
         this.bus = checkNotNull(bus);
     }
 
+    void clear() {
+        subscribers.clear();
+    }
+
     void subscribe(BaseListener listener, Class<?> clazz, Iterable<String> tags)
     {
         Set<Subscriber> listenerMethodsForClazz = findSubscribersOfClass(listener,clazz);
