@@ -1,6 +1,12 @@
 spring:
   application:
     name: oms-trade-biz
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+  jms:
+    pub-sub-domain: true #默认false = Queue   true = Topic
 
 server:
   port: 8079
@@ -13,3 +19,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:12345/eureka/
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 600000

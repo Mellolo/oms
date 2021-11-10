@@ -1,29 +1,52 @@
 package com.hengtiansoft.strategy.bo.engine;
 
+import com.hengtiansoft.eventbus.BaseEvent;
 import com.hengtiansoft.eventbus.EventBus;
 import com.hengtiansoft.strategy.bo.strategy.RunningStrategy;
 import com.hengtiansoft.strategy.exception.StrategyException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.RunnableFuture;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class StrategyEngine {
+    private ThreadPoolTaskExecutor poolTaskExecutor;
+
     private Map<String, RunningStrategy> strategyMap;
     private EventBus eventBus;
     private Map<String, RunningStrategy> duplicateMap = new ConcurrentHashMap<>();
     private Map<String, ReentrantLock> lockMap = new ConcurrentHashMap<>();
 
-    public StrategyEngine(Map<String, RunningStrategy> strategyMap, EventBus eventBus) {
+    public StrategyEngine(Map<String, RunningStrategy> strategyMap, EventBus eventBus, ThreadPoolTaskExecutor poolTaskExecutor) {
         this.strategyMap = strategyMap;
         this.eventBus = eventBus;
+        this.poolTaskExecutor = poolTaskExecutor;
+    }
+
+    public void post(BaseEvent event) {
+        eventBus.post(event);
     }
 
     public void clear() {
         eventBus.clear();
-        strategyMap.clear();
-        duplicateMap.clear();
+        clearMapStrategy(strategyMap);
+        clearMapStrategy(duplicateMap);
         lockMap.clear();
+    }
+
+    private void clearMapStrategy(Map<String, RunningStrategy> map) {
+        for(Map.Entry<String, RunningStrategy> entry: map.entrySet()) {
+            poolTaskExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    entry.getValue().destroy();
+                }
+            });
+        }
+        map.clear();
     }
 
     public boolean contains(String strategyId) {

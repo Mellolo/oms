@@ -16,12 +16,16 @@ public class TestController {
     @RequestMapping(value = "test/register" , method = RequestMethod.GET)
     public void testRegister()
     {
-        strategyService.register(111,"123",new String[]{"a","b"});
+        System.out.println(
+                strategyService.register(112,"123",new String[]{"a","b"})
+        );
     }
 
     @RequestMapping(value = "test/unregister/{strategyId}" , method = RequestMethod.GET)
     public void testUnregister(@PathVariable String strategyId)
     {
-        strategyService.unregister(strategyId);
+        System.out.println(
+                strategyService.unregister(strategyId)
+        );
     }
 }

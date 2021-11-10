@@ -1,26 +1,17 @@
 {
   "groups": [
     {
-      "name": "spring.redis.oms-redisson",
-      "type": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties",
-      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
+      "name": "duplicate",
+      "type": "com.hengtiansoft.strategy.master.config.DuplicateProperties",
+      "sourceType": "com.hengtiansoft.strategy.master.config.DuplicateProperties"
     }
   ],
   "properties": [
     {
-      "name": "spring.redis.oms-redisson.cluster",
-      "type": "java.lang.String",
-      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
-    },
-    {
-      "name": "spring.redis.oms-redisson.nodes",
-      "type": "java.util.List<java.lang.String>",
-      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
-    },
-    {
-      "name": "spring.redis.oms-redisson.single",
-      "type": "java.lang.String",
-      "sourceType": "com.hengtiansoft.strategy.master.config.redisson.OmsRedissonProperties"
+      "name": "duplicate.num",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hengtiansoft.strategy.master.config.DuplicateProperties",
+      "defaultValue": 1
     }
   ],
   "hints": []

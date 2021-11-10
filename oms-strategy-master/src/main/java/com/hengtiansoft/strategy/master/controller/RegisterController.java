@@ -1,6 +1,9 @@
 package com.hengtiansoft.strategy.master.controller;
 
+import com.google.common.collect.Lists;
+import com.hengtiansoft.strategy.master.config.DuplicateProperties;
 import com.hengtiansoft.strategy.master.model.HostPortCountModel;
+import com.hengtiansoft.strategy.master.model.StrategyHostPortModel;
 import com.hengtiansoft.strategy.master.service.HostPortService;
 import com.hengtiansoft.strategy.master.service.RegisterService;
 import com.hengtiansoft.strategy.master.service.RunningStrategyService;
@@ -10,15 +13,22 @@ import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RunnableFuture;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @RestController
+@EnableConfigurationProperties(DuplicateProperties.class)
 public class RegisterController {
 
     @Autowired
@@ -37,7 +47,10 @@ public class RegisterController {
     @Autowired
     private RedissonClient redissonClient;
 
-    @GetMapping("register")
+    @Autowired
+    ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
+    @PostMapping("register")
     public String register(int codeId, String userId, String[] accounts) {
         // 缓存着的服务器列表
         Set<String> cachedServerSet = stringRedisTemplate.opsForSet().members("serverSet");
@@ -46,9 +59,8 @@ public class RegisterController {
         }
 
         // 注册策略
-        // todo: 空机器数据库选不出来
         String strategyId = UUID.randomUUID().toString();
-        List<HostPortCountModel> hostPortCountModels = hostPortService.selectStrategyHostport(new ArrayList<>(cachedServerSet));
+        List<HostPortCountModel> hostPortCountModels = hostPortService.selectStrategyHostPortCountByHostPort(cachedServerSet);
         Collections.sort(hostPortCountModels);
         String strategyHostPort = null;
         for(HostPortCountModel hostPortCountModel: hostPortCountModels) {
@@ -66,12 +78,18 @@ public class RegisterController {
             }
         }
         if(StringUtils.isBlank(strategyHostPort)) {
-            return "Fail";
+            return "Register fails";
         }
 
         // 添加副本
-        // todo: 空机器数据库选不出来
-        hostPortCountModels = hostPortService.selectDuplicateHostport(new ArrayList<>(cachedServerSet));
+        // todo: 并行添加副本
+//        threadPoolTaskExecutor.execute(new FutureTask<>(new Callable<Boolean>() {
+//            @Override
+//            public Boolean call() {
+//                return null;
+//            }
+//        }));
+        hostPortCountModels = hostPortService.selectDuplicateHostPortCountByHostPort(cachedServerSet);
         Collections.sort(hostPortCountModels);
         int requiredNum = 2;
         int duplicateNum = 0;
@@ -92,24 +110,42 @@ public class RegisterController {
             }
         }
         runningStrategyService.turnUp(strategyId);
-        return String.format("Succeed with %d duplicates", duplicateNum);
+        return String.format("Register succeed with %d duplicates", duplicateNum);
     }
 
-    @GetMapping("unregister")
-    public void unregister(String strategyId) {
+    @DeleteMapping("unregister")
+    public String unregister(String strategyId) {
         while(true) {
             releaseForHeartBeat();
             if(runningStrategyService.isUp(strategyId)) {
                 RReadWriteLock rwlock = redissonClient.getReadWriteLock("update");
-                if(rwlock.readLock().tryLock()) {
-                    try {
-                        // todo: 根据表里的hostport找到特定的机器删除duplicates和strategy
+                try {
+                    if(rwlock.readLock().tryLock(0, 1, TimeUnit.SECONDS)) {
+                        try {
+                            StrategyHostPortModel strategyHostPortModel = hostPortService.selectStrategyHostPortById(strategyId);
+                            registerService.unregister(strategyHostPortModel.getHostPort(), strategyId);
+
+                            // todo: 并行remove
+                            List<StrategyHostPortModel> duplicateHostPortModels = hostPortService.selectDuplicateHostPortById(
+                                    Lists.newArrayList(strategyId)
+                            );
+                            for(StrategyHostPortModel duplicateHostPortModel: duplicateHostPortModels) {
+                                registerService.removeDuplicate(duplicateHostPortModel.getHostPort(), strategyId);
+                            }
+                            return "Unregister succeed";
+                        }
+                        finally {
+                            rwlock.readLock().unlock();
+                        }
                     }
-                    finally {
-                        rwlock.readLock().unlock();
-                    }
-                    return;
                 }
+                catch (Exception e) {
+                    log.error(e.toString());
+                    return "Unregister fails";
+                }
+            }
+            else {
+                return "Unregister fails";
             }
         }
     }
@@ -124,7 +160,7 @@ public class RegisterController {
                 }
             }
             try {
-                Thread.sleep(100);
+                Thread.sleep(50);
             } catch (Exception e) {
                 log.error("Error releaseForHeartBeat Thread.sleep");
             }

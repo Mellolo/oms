@@ -1,5 +1,6 @@
 package com.hengtiansoft.strategy;
 
+import com.hengtiansoft.strategy.utils.ExceptionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,11 +15,12 @@ public class StrategyApplication {
 
     public static void main(String[] args) {
         try {
-            Thread.sleep(3000);
-            SpringApplication.run(StrategyApplication.class, args);
+            Thread.sleep(5000);
         } catch (Exception e) {
-            log.error("Main Error Thread.sleep");
+            log.error("Main Error " + ExceptionUtils.getStackTrace(e));
+            return;
         }
+        SpringApplication.run(StrategyApplication.class, args);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.hengtiansoft.strategy.utils;
+package com.hengtiansoft.strategy.component.utils;
 
 import io.micrometer.core.lang.NonNull;
 import org.springframework.beans.BeansException;

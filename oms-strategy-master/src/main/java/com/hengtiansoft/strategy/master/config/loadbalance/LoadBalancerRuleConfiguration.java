@@ -1,4 +1,4 @@
-package com.hengtiansoft.strategy.master.config;
+package com.hengtiansoft.strategy.master.config.loadbalance;
 
 import com.hengtiansoft.strategy.master.utils.StrategyUtils;
 import com.netflix.client.config.IClientConfig;

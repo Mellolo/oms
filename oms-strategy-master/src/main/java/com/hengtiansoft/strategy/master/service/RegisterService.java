@@ -49,4 +49,10 @@ public class RegisterService {
         StrategyUtils.setHostPort(null);
         return res;
     }
+
+    public void refresh(String hostPort) {
+        StrategyUtils.setHostPort(hostPort);
+        strategyService.refresh();
+        StrategyUtils.setHostPort(null);
+    }
 }

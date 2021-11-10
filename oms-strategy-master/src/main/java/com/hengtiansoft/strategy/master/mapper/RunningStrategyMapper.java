@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface RunningStrategyMapper {
 
-    boolean isUp(String id);
+    Boolean isUp(String id);
 
     void updateIsUp(@Param("id") String id, @Param("isUp") boolean isUp);
 

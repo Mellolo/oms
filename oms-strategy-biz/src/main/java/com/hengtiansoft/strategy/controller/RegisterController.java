@@ -47,7 +47,7 @@ public class RegisterController {
         if(!strategyEngine.contains(strategyId)) {
             ReentrantLock lock = strategyEngine.getLock(strategyId);
             lock.lock();
-            if (strategyEngine.contains(strategyId)) {
+            if (!strategyEngine.contains(strategyId)) {
                 RunningStrategy runningStrategy = null;
                 Stack<String> rollbackStack = new Stack<>();
                 try {
@@ -290,6 +290,7 @@ public class RegisterController {
 
     @DeleteMapping("refresh")
     public void refresh() {
+        System.out.println("refresh");
         strategyEngine.clear();
     }
 }

@@ -6,22 +6,22 @@ import com.github.dockerjava.api.command.ExecCreateCmdResponse;
 import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.hengtiansoft.eventbus.SubscribeEvent;
 import com.hengtiansoft.strategy.bo.docker.callback.LogResultCallback;
+import com.hengtiansoft.strategy.bo.engine.StrategyEngine;
 import com.hengtiansoft.strategy.config.py4j.GatewayProperties;
-import com.hengtiansoft.strategy.controller.RegisterController;
 import com.hengtiansoft.strategy.exception.StrategyException;
 import com.hengtiansoft.strategy.bo.strategy.event.TickEvent;
+import com.hengtiansoft.strategy.feign.MasterNodeService;
 import com.hengtiansoft.strategy.model.RunningStrategyModel;
 import com.hengtiansoft.strategy.model.StrategyModel;
 import com.hengtiansoft.strategy.service.StrategyLogService;
-import com.hengtiansoft.strategy.utils.ApplicationContextUtils;
+import com.hengtiansoft.strategy.component.utils.ApplicationContextUtils;
 import com.hengtiansoft.strategy.utils.ExceptionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.ContextLoader;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.io.*;
 import java.util.Stack;
@@ -176,8 +176,16 @@ public class RunningStrategy extends BaseStrategy {
         return getBeanByType(GatewayProperties.class);
     }
 
-    private RegisterController getRegisterController() {
-        return getBeanByType(RegisterController.class);
+    private StrategyEngine getStrategyEngine() {
+        return getBeanByType(StrategyEngine.class);
+    }
+
+    private ThreadPoolTaskExecutor getThreadPoolTaskExecutor() {
+        return getBeanByType(ThreadPoolTaskExecutor.class);
+    }
+
+    private MasterNodeService getMasterNodeService() {
+        return getBeanByType(MasterNodeService.class);
     }
 
     private StrategyLogService getStrategyLogService() {
@@ -222,8 +230,19 @@ public class RunningStrategy extends BaseStrategy {
                 throw new StrategyException(this.id, String.format("Cannot handleTick: %s", this.id));
             }
         } catch (Exception e) {
-            RegisterController registerController = getRegisterController();
-            registerController.unregister(this.id);
+            StrategyEngine strategyEngine = getStrategyEngine();
+            strategyEngine.unregisterStrategy(this.id);
+            ThreadPoolTaskExecutor poolTaskExecutor = getThreadPoolTaskExecutor();
+            poolTaskExecutor.execute(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            MasterNodeService masterNodeService = getMasterNodeService();
+                            masterNodeService.unregister(RunningStrategy.this.id);
+                        }
+                    }
+            );
+
         }
     }
 

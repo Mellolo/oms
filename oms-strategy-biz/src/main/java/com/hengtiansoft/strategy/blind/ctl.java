@@ -45,8 +45,6 @@ public class ctl {
     @GetMapping("post")
     public void post()
     {
-        BaseEvent event1 = new TickEvent("000001.XSHE", "000001.XSHE", new Date(2020,0,31,10,30,30),1,1,1,1,1,1);
-        eventBus.post(event1);
     }
 
     @GetMapping("trade")

@@ -17,7 +17,13 @@ public class RunningStrategyService {
 
     @Transactional(rollbackFor = {Exception.class, Error.class})
     public boolean isUp(String runningStrategyId) {
-        return runningStrategyMapper.isUp(runningStrategyId);
+        Boolean res = runningStrategyMapper.isUp(runningStrategyId);
+        if(res==null) {
+            return false;
+        }
+        else {
+            return res;
+        }
     }
 
     @Transactional(rollbackFor = {Exception.class, Error.class})
