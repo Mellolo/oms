@@ -1,20 +1,9 @@
 import com.alibaba.fastjson.JSONObject;
-import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.api.async.ResultCallback;
 import com.github.dockerjava.api.command.*;
 import com.github.dockerjava.api.model.*;
-import com.github.dockerjava.core.DefaultDockerClientConfig;
-import com.github.dockerjava.core.DockerClientConfig;
-import com.github.dockerjava.core.DockerClientImpl;
-import com.github.dockerjava.core.command.ExecStartResultCallback;
-import com.github.dockerjava.httpclient5.ApacheDockerHttpClient;
-import com.github.dockerjava.transport.DockerHttpClient;
-import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.BooleanUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.io.*;
@@ -26,6 +15,7 @@ import java.time.Duration;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class Main {
     public static void main(String[] args) {
         /*
@@ -59,7 +49,7 @@ public class Main {
         list.add(stuC);
         list.add(stuD);
         list.add(stuE);
-        System.out.println(Lists.partition(list,2));
+        //System.out.println(Lists.partition(list,2));
     }
 }
 

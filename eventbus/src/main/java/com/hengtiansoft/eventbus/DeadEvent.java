@@ -4,7 +4,7 @@ import com.google.common.base.MoreObjects;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class DeadEvent extends BaseEvent {
+public final class DeadEvent extends BaseEvent {
 
     private final Object source;
     private final Object event;

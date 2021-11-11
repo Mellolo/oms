@@ -131,6 +131,10 @@ public class RunningStrategy extends BaseStrategy {
         addEventListened(TickEvent.class, security);
     }
 
+    final public void unsubscribe(String security) {
+        removeEventListened(TickEvent.class, security);
+    }
+
     private boolean execDockerCmd(String... cmd) {
         try {
             // 1. 获取容器运行状态

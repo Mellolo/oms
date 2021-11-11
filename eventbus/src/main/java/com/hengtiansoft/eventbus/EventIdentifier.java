@@ -1,6 +1,6 @@
 package com.hengtiansoft.eventbus;
 
-import java.util.Objects;
+import java.util.*;
 
 final class EventIdentifier {
     private final Class<?> clazz;
@@ -8,7 +8,6 @@ final class EventIdentifier {
 
     static EventIdentifier getEventIdentifier(Class<?> clazz, String tag)
     {
-        //可以尝试改成常量池形式
         return new EventIdentifier(clazz,tag);
     }
 

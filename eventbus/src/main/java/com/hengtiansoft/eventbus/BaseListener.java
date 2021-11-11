@@ -9,8 +9,7 @@ public abstract class BaseListener {
     private Set<EventBus> busSet = new HashSet<>();
     private final Multimap<Class<?>, String> eventTags = HashMultimap.create();
 
-    public final void addEventListened(Class<?> clazz, String tag)
-    {
+    public final void addEventListened(Class<?> clazz, String tag) {
         if(eventTags.containsEntry(clazz,tag)) return;
         eventTags.put(clazz, tag);
         for(EventBus bus: busSet)
@@ -19,8 +18,7 @@ public abstract class BaseListener {
         }
     }
 
-    public final void removeEventListened(Class<?> clazz, String tag)
-    {
+    public final void removeEventListened(Class<?> clazz, String tag) {
         if(!eventTags.containsEntry(clazz,tag)) return;
         eventTags.remove(clazz, tag);
         for(EventBus bus: busSet)
@@ -29,8 +27,7 @@ public abstract class BaseListener {
         }
     }
 
-    public final void addAllEventListened(Class<?> clazz, Iterable<String> tags)
-    {
+    public final void addAllEventListened(Class<?> clazz, Iterable<String> tags) {
         List<String> tagsToAdd = new ArrayList<>();
         for(String tag:tags)
             if(!eventTags.containsEntry(clazz, tag))
@@ -42,8 +39,7 @@ public abstract class BaseListener {
         }
     }
 
-    public final void removeAllEventListened(Class<?> clazz)
-    {
+    public final void removeAllEventListened(Class<?> clazz) {
         Collection<String> tagsToRemove = eventTags.removeAll(clazz);
         for(EventBus bus: busSet)
         {
@@ -51,8 +47,7 @@ public abstract class BaseListener {
         }
     }
 
-    public final Iterable<EventIdentifier> getEventIdentifiers(Class<?> clazz)
-    {
+    public final Iterable<EventIdentifier> getEventIdentifiers(Class<?> clazz) {
         List<EventIdentifier> eventIdentifierList = new ArrayList<>();
         for(String tag: eventTags.get(clazz))
         {
@@ -61,20 +56,17 @@ public abstract class BaseListener {
         return eventIdentifierList;
     }
 
-    public void register(EventBus eventBus)
-    {
+    public void register(EventBus eventBus) {
         busSet.add(eventBus);
         eventBus.register(this);
     }
 
-    public void unregister(EventBus eventBus)
-    {
+    public void unregister(EventBus eventBus) {
         busSet.remove(eventBus);
         eventBus.unregister(this);
     }
 
-    protected void unregisterAll()
-    {
+    protected void unregisterAll() {
         for(EventBus bus: busSet)
         {
             this.unregister(bus);

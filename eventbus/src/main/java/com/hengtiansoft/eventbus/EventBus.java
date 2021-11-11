@@ -1,25 +1,25 @@
 package com.hengtiansoft.eventbus;
 
 import com.google.common.base.MoreObjects;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.concurrent.Executor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+@Slf4j
 public class EventBus{
-    private static final Logger logger = Logger.getLogger(EventBus.class.getName());
-
     private final String identifier;
     private final ExecutorPool executorPool;
     private final SubscriberExceptionHandler exceptionHandler;
     private final SubscriberRegistry subscribers = new SubscriberRegistry(this);
     private final Dispatcher dispatcher;
+
+    private boolean postable = true;
 
     public EventBus() {
         this("default",4);
@@ -66,11 +66,7 @@ public class EventBus{
         try {
             exceptionHandler.handleException(e, context);
         } catch (Throwable e2) {
-            // if the handler threw an exception... well, just log it
-            logger.log(
-                    Level.SEVERE,
-                    String.format(Locale.ROOT, "Exception %s thrown while handling exception: %s", e2, e),
-                    e2);
+            log.error(String.format(Locale.ROOT, "Exception %s thrown while handling exception: %s", e2, e), e2);
         }
     }
 
@@ -86,10 +82,7 @@ public class EventBus{
         try {
             subscribers.unregister(listener);
         } catch (Exception e) {
-            logger.log(
-                    Level.WARNING,
-                    String.format("Unregister Exception: %s", e),
-                    e);
+            log.warn(String.format("Unregister Exception: %s", e), e);
         }
     }
 
@@ -114,12 +107,13 @@ public class EventBus{
     }
 
     public void post(BaseEvent event) {
-        Iterator<Subscriber> eventSubscribers = subscribers.getSubscribers(event);
-        if (eventSubscribers.hasNext()) {
-            dispatcher.dispatch(event, eventSubscribers);
-        } else if (!(event instanceof DeadEvent)) {
-            // the event had no subscribers and was not itself a DeadEvent
-            post(new DeadEvent(this, event));
+        if(postable) {
+            Iterator<Subscriber> eventSubscribers = subscribers.getSubscribers(event);
+            if (eventSubscribers.hasNext()) {
+                dispatcher.dispatch(event, eventSubscribers);
+            } else if (!(event instanceof DeadEvent)) {
+                post(new DeadEvent(this, event));
+            }
         }
     }
 
@@ -130,21 +124,20 @@ public class EventBus{
 
     public void shutdown()
     {
-        // TODO: 2021/4/28/028 增加其他收尾内容
+        postable = false;
         executorPool.shutdown();
     }
 
+    @Slf4j
     static final class LoggingHandler implements SubscriberExceptionHandler {
         static final LoggingHandler INSTANCE = new LoggingHandler();
 
         @Override
         public void handleException(Throwable exception, SubscriberExceptionContext context) {
-            Logger logger = logger(context);
-            //todo
-        }
-
-        private static Logger logger(SubscriberExceptionContext context) {
-            return Logger.getLogger(EventBus.class.getName() + "." + context.getEventBus().identifier());
+            log.error(
+                    String.format("%s.%s: %s", EventBus.class.getName(), context.getEventBus().identifier(), exception),
+                    exception
+            );
         }
 
         private static String message(SubscriberExceptionContext context) {

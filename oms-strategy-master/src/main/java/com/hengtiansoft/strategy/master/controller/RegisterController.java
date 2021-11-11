@@ -62,17 +62,22 @@ public class RegisterController {
         Collections.sort(hostPortCountModels);
         String strategyHostPort = null;
         for(HostPortCountModel hostPortCountModel: hostPortCountModels) {
-            if(
-                    registerService.register(
-                            hostPortCountModel.getHostPort(),
-                            strategyId,
-                            codeId,
-                            userId,
-                            accounts
-                    )
-            ) {
-                strategyHostPort = hostPortCountModel.getHostPort();
+            try {
+                if(
+                        registerService.register(
+                                hostPortCountModel.getHostPort(),
+                                strategyId,
+                                codeId,
+                                userId,
+                                accounts
+                        )
+                ) {
+                    strategyHostPort = hostPortCountModel.getHostPort();
+                }
                 break;
+            }
+            catch (Exception e) {
+                log.error("Error register: %s", e);
             }
         }
         if(StringUtils.isBlank(strategyHostPort)) {
@@ -84,9 +89,10 @@ public class RegisterController {
         int duplicateNum = 0;
         hostPortCountModels = hostPortService.selectDuplicateHostPortCountByHostPort(cachedServerSet);
         Collections.sort(hostPortCountModels);
-        for(int i=0;i<hostPortCountModels.size();i+=requiredNum) {
+        for(int i=0;i<hostPortCountModels.size();) {
             List<Future<Boolean>> futureList = new ArrayList<>();
-            for(int j=i;j<i+requiredNum && j<hostPortCountModels.size();j++) {
+            int j;
+            for(j=i;j<i+requiredNum && j<hostPortCountModels.size();j++) {
                 HostPortCountModel hostPortCountModel = hostPortCountModels.get(j);
                 if(strategyHostPort.equals(hostPortCountModel.getHostPort())) {
                     continue;
@@ -102,6 +108,7 @@ public class RegisterController {
                 poolTaskExecutor.execute(future);
                 futureList.add(future);
             }
+            i = j;
             for(Future<Boolean> future: futureList) {
                 try {
                     if(BooleanUtils.isTrue(future.get())) {
@@ -127,8 +134,8 @@ public class RegisterController {
         while(true) {
             releaseForHeartBeat();
             if(runningStrategyService.isUp(strategyId)) {
-                RReadWriteLock rwlock = redissonClient.getReadWriteLock("update");
                 try {
+                    RReadWriteLock rwlock = redissonClient.getReadWriteLock("update");
                     if(rwlock.readLock().tryLock(0, 1, TimeUnit.SECONDS)) {
                         try {
                             StrategyHostPortModel strategyHostPortModel = hostPortService.selectStrategyHostPortById(strategyId);
@@ -139,13 +146,27 @@ public class RegisterController {
                             List<StrategyHostPortModel> duplicateHostPortModels = hostPortService.selectDuplicateHostPortById(
                                     Lists.newArrayList(strategyId)
                             );
+                            List<Future<Boolean>> futureList = new ArrayList<>();
                             for(StrategyHostPortModel duplicateHostPortModel: duplicateHostPortModels) {
-                                poolTaskExecutor.execute(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        registerService.removeDuplicate(duplicateHostPortModel.getHostPort(), strategyId);
-                                    }
-                                });
+                                FutureTask<Boolean> future = new FutureTask<>(
+                                        new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                registerService.removeDuplicate(duplicateHostPortModel.getHostPort(), strategyId);
+                                            }
+                                        },
+                                        true
+                                );
+                                poolTaskExecutor.execute(future);
+                                futureList.add(future);
+                            }
+                            for(Future<Boolean> future: futureList) {
+                                try {
+                                    future.get();
+                                }
+                                catch (Exception e) {
+                                    log.error("Error Unregister removeDuplicate: %s", e);
+                                }
                             }
                             return "Unregister succeed";
                         }
@@ -160,7 +181,7 @@ public class RegisterController {
                 }
             }
             else {
-                return "Unregister fails";
+                return "Unregister fails: strategy does not exists";
             }
         }
     }
@@ -170,7 +191,7 @@ public class RegisterController {
             String serverSetUpdateTimeStr = stringRedisTemplate.opsForValue().get("serverSetUpdateTime");
             if(serverSetUpdateTimeStr!=null) {
                 long serverSetUpdateTime = Long.valueOf(serverSetUpdateTimeStr);
-                if(System.currentTimeMillis() - serverSetUpdateTime < 1000) {
+                if(System.currentTimeMillis() - serverSetUpdateTime < 200) {
                     break;
                 }
             }
