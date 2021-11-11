@@ -38,7 +38,7 @@ eureka:
 py4j:
   port: 25335
   pythonPort: 25334
-  defaultAddress: 10.112.174.17
+  # defaultAddress: 192.168.112.1
 
 docker:
   client:
@@ -52,3 +52,4 @@ feign:
       default:
         connectTimeout: 10000
         readTimeout: 600000
+

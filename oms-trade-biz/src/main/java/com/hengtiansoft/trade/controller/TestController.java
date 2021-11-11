@@ -1,5 +1,6 @@
 package com.hengtiansoft.trade.controller;
 
+import com.hengtiansoft.trade.component.TickProducer;
 import com.hengtiansoft.trade.feign.StrategyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +14,30 @@ public class TestController {
     @Autowired
     StrategyService strategyService;
 
-    @RequestMapping(value = "test/register" , method = RequestMethod.GET)
-    public void testRegister()
+    @Autowired
+    TickProducer tickProducer;
+
+    @RequestMapping(value = "test/register/{accountId}" , method = RequestMethod.GET)
+    public void testRegister(@PathVariable String accountId)
     {
         System.out.println(
-                strategyService.register(112,"123",new String[]{"a","b"})
+                strategyService.register(111,"123",new String[]{accountId})
+        );
+    }
+
+    @RequestMapping(value = "test/initial/{accountId}" , method = RequestMethod.GET)
+    public void testDownRegister(@PathVariable String accountId)
+    {
+        System.out.println(
+                strategyService.register(112,"123",new String[]{accountId})
+        );
+    }
+
+    @RequestMapping(value = "test/handle/{accountId}" , method = RequestMethod.GET)
+    public void testDownHandleTick(@PathVariable String accountId)
+    {
+        System.out.println(
+                strategyService.register(113,"123",new String[]{accountId})
         );
     }
 
@@ -27,5 +47,12 @@ public class TestController {
         System.out.println(
                 strategyService.unregister(strategyId)
         );
+    }
+
+
+    @RequestMapping(value = "test/tick/{code}" , method = RequestMethod.GET)
+    public void testTick(@PathVariable String code)
+    {
+        tickProducer.produceTick(code);
     }
 }

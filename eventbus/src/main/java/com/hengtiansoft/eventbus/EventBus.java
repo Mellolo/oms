@@ -83,7 +83,14 @@ public class EventBus{
     }
 
     void unregister(BaseListener listener) {
-        subscribers.unregister(listener);
+        try {
+            subscribers.unregister(listener);
+        } catch (Exception e) {
+            logger.log(
+                    Level.WARNING,
+                    String.format("Unregister Exception: %s", e),
+                    e);
+        }
     }
 
     public void subscribe(BaseListener listener, Class<?> clazz, String tag)

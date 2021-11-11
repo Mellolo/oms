@@ -8,6 +8,7 @@ import com.hengtiansoft.strategy.master.service.HostPortService;
 import com.hengtiansoft.strategy.master.service.RegisterService;
 import com.hengtiansoft.strategy.master.service.RunningStrategyService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
@@ -21,10 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.RunnableFuture;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 @Slf4j
 @RestController
@@ -48,7 +46,7 @@ public class RegisterController {
     private RedissonClient redissonClient;
 
     @Autowired
-    ThreadPoolTaskExecutor threadPoolTaskExecutor;
+    ThreadPoolTaskExecutor poolTaskExecutor;
 
     @PostMapping("register")
     public String register(int codeId, String userId, String[] accounts) {
@@ -81,34 +79,45 @@ public class RegisterController {
             return "Register fails";
         }
 
-        // 添加副本
-        // todo: 并行添加副本
-//        threadPoolTaskExecutor.execute(new FutureTask<>(new Callable<Boolean>() {
-//            @Override
-//            public Boolean call() {
-//                return null;
-//            }
-//        }));
-        hostPortCountModels = hostPortService.selectDuplicateHostPortCountByHostPort(cachedServerSet);
-        Collections.sort(hostPortCountModels);
+        // 并行添加副本
         int requiredNum = 2;
         int duplicateNum = 0;
-        for(HostPortCountModel hostPortCountModel: hostPortCountModels) {
-            if(strategyHostPort.equals(hostPortCountModel.getHostPort())) {
-                continue;
+        hostPortCountModels = hostPortService.selectDuplicateHostPortCountByHostPort(cachedServerSet);
+        Collections.sort(hostPortCountModels);
+        for(int i=0;i<hostPortCountModels.size();i+=requiredNum) {
+            List<Future<Boolean>> futureList = new ArrayList<>();
+            for(int j=i;j<i+requiredNum && j<hostPortCountModels.size();j++) {
+                HostPortCountModel hostPortCountModel = hostPortCountModels.get(j);
+                if(strategyHostPort.equals(hostPortCountModel.getHostPort())) {
+                    continue;
+                }
+                FutureTask<Boolean> future = new FutureTask<>(
+                        new Callable<Boolean>() {
+                            @Override
+                            public Boolean call() throws Exception {
+                                return registerService.addDuplicate(hostPortCountModel.getHostPort(), strategyId);
+                            }
+                        }
+                );
+                poolTaskExecutor.execute(future);
+                futureList.add(future);
             }
-            if(duplicateNum>=requiredNum){
+            for(Future<Boolean> future: futureList) {
+                try {
+                    if(BooleanUtils.isTrue(future.get())) {
+                        requiredNum--;
+                        duplicateNum++;
+                    }
+                }
+                catch (Exception e) {
+                    log.error("Error HearBeat refreshFuture: %s", e);
+                }
+            }
+            if(requiredNum<=0){
                 break;
             }
-            if(
-                    registerService.addDuplicate(
-                        hostPortCountModel.getHostPort(),
-                        strategyId
-                    )
-            ) {
-                duplicateNum++;
-            }
         }
+
         runningStrategyService.turnUp(strategyId);
         return String.format("Register succeed with %d duplicates", duplicateNum);
     }
@@ -123,14 +132,20 @@ public class RegisterController {
                     if(rwlock.readLock().tryLock(0, 1, TimeUnit.SECONDS)) {
                         try {
                             StrategyHostPortModel strategyHostPortModel = hostPortService.selectStrategyHostPortById(strategyId);
-                            registerService.unregister(strategyHostPortModel.getHostPort(), strategyId);
+                            if(strategyHostPortModel!=null && StringUtils.isNotBlank(strategyHostPortModel.getHostPort())) {
+                                registerService.unregister(strategyHostPortModel.getHostPort(), strategyId);
+                            }
 
-                            // todo: 并行remove
                             List<StrategyHostPortModel> duplicateHostPortModels = hostPortService.selectDuplicateHostPortById(
                                     Lists.newArrayList(strategyId)
                             );
                             for(StrategyHostPortModel duplicateHostPortModel: duplicateHostPortModels) {
-                                registerService.removeDuplicate(duplicateHostPortModel.getHostPort(), strategyId);
+                                poolTaskExecutor.execute(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        registerService.removeDuplicate(duplicateHostPortModel.getHostPort(), strategyId);
+                                    }
+                                });
                             }
                             return "Unregister succeed";
                         }

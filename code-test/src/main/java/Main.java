@@ -59,6 +59,7 @@ public class Main {
         list.add(stuC);
         list.add(stuD);
         list.add(stuE);
+        System.out.println(Lists.partition(list,2));
     }
 }
 

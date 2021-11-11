@@ -9,6 +9,12 @@ spring:
     druid:
       initial-size: 10
       max-active: 11
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+  jms:
+    pub-sub-domain: true #默认false = Queue   true = Topic
 
 mybatis:
   configuration:
@@ -32,7 +38,7 @@ eureka:
 py4j:
   port: 25333
   pythonPort: 25334
-  defaultAddress: 10.112.174.17
+  # defaultAddress: 192.168.112.1
 
 docker:
   client:
@@ -40,3 +46,9 @@ docker:
     response-timeout: 45
     docker-host: tcp://192.168.29.132:2375
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 600000

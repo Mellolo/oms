@@ -115,6 +115,14 @@ public class StrategyEngine {
         }
     }
 
+    public void initialize(String strategyId) {
+        RunningStrategy runningStrategy = duplicateMap.get(strategyId);
+        if(runningStrategy!=null) {
+            runningStrategy.initialize();
+        }
+    }
+
+
     public ReentrantLock getLock(String strategyId) {
         if(!lockMap.containsKey(strategyId)) {
             lockMap.computeIfAbsent(strategyId, k->new ReentrantLock());

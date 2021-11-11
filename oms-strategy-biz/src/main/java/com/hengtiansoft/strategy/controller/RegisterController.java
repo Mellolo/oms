@@ -251,12 +251,14 @@ public class RegisterController {
                 Stack<String> rollbackStack = new Stack<>();
                 try {
                     // 1. 将副本转换为运行中的策略
+                    strategyEngine.initialize(strategyId);
+                    // 2. 将副本转换为运行中的策略
                     strategyEngine.turnDuplicate2Strategy(strategyId);
                     rollbackStack.push("turnStrategy2Duplicate");
-                    // 2. 修改数据库，将数据库中副本转换为运行中的策略
+                    // 3. 修改数据库，将数据库中副本转换为运行中的策略
                     hostPortService.updateDuplicate2Strategy(strategyId, hostPortUtils.getHostPort());
                     rollbackStack.push("abortStrategy2Duplicate");
-                    // 3. 完成副本转换策略
+                    // 4. 完成副本转换策略
                     return true;
                 } catch (Exception e) {
                     while (!rollbackStack.empty()) {
