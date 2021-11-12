@@ -11,5 +11,12 @@
         UPDATE running_strategy SET is_up = #{isUp} WHERE id = #{id}
     </update>
 
+    <delete id="delete" parameterType="String" >
+        Delete from running_strategy where id = #{id}
+    </delete>
+
+    <delete id="deleteAccountBinding" parameterType="String" >
+        Delete from account_running_strategy where running_strategy_id = #{runningStrategyId}
+    </delete>
 
 </mapper>

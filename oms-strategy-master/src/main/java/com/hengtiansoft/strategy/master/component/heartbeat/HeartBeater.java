@@ -50,10 +50,10 @@ public class HeartBeater implements InitializingBean {
             long start = System.currentTimeMillis();
             try {
                 RLock lock = redissonClient.getLock("heartbeat");
-                if (lock.tryLock(0,2, TimeUnit.SECONDS)) {
+                if (lock.tryLock(0,6, TimeUnit.SECONDS)) {
                     try {
                         RReadWriteLock rwlock = redissonClient.getReadWriteLock("update");
-                        rwlock.writeLock().lock(2, TimeUnit.SECONDS);
+                        rwlock.writeLock().lock(6, TimeUnit.SECONDS);
                         try {
                             // 缓存着的服务器列表
                             Set<String> cachedServerSet = stringRedisTemplate.opsForSet().members("serverSet");

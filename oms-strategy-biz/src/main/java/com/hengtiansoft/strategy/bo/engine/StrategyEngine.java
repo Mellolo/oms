@@ -97,7 +97,6 @@ public class StrategyEngine {
     public void turnStrategy2Duplicate(String strategyId) {
         RunningStrategy runningStrategy = strategyMap.get(strategyId);
         if(runningStrategy!=null) {
-            runningStrategy.unregister(eventBus);
             strategyMap.remove(strategyId);
             duplicateMap.put(strategyId, runningStrategy);
         }
@@ -108,7 +107,6 @@ public class StrategyEngine {
         if(runningStrategy!=null) {
             duplicateMap.remove(strategyId);
             strategyMap.put(strategyId, runningStrategy);
-            runningStrategy.register(eventBus);
         }
         else {
             throw new StrategyException(strategyId, "Error turnDuplicate2Strategy");
@@ -116,7 +114,7 @@ public class StrategyEngine {
     }
 
     public void initialize(String strategyId) {
-        RunningStrategy runningStrategy = duplicateMap.get(strategyId);
+        RunningStrategy runningStrategy = strategyMap.get(strategyId);
         if(runningStrategy!=null) {
             runningStrategy.initialize();
         }

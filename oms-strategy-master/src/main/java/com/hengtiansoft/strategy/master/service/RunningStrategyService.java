@@ -16,6 +16,11 @@ public class RunningStrategyService {
     RunningStrategyMapper runningStrategyMapper;
 
     @Transactional(rollbackFor = {Exception.class, Error.class})
+    public List<String> selectIdAll() {
+        return runningStrategyMapper.selectIdAll();
+    }
+
+    @Transactional(rollbackFor = {Exception.class, Error.class})
     public boolean isUp(String runningStrategyId) {
         Boolean res = runningStrategyMapper.isUp(runningStrategyId);
         if(res==null) {
@@ -34,6 +39,12 @@ public class RunningStrategyService {
     @Transactional(rollbackFor = {Exception.class, Error.class})
     public void turnDown(String runningStrategyId) {
         runningStrategyMapper.updateIsUp(runningStrategyId, false);
+    }
+
+    @Transactional(rollbackFor = {Exception.class, Error.class})
+    public void deleteRunningStrategy(String runningStrategyId) {
+        runningStrategyMapper.delete(runningStrategyId);
+        runningStrategyMapper.deleteAccountBinding(runningStrategyId);
     }
 
 }

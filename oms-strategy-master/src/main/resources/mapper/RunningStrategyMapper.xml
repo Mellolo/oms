@@ -3,6 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hengtiansoft.strategy.master.mapper.RunningStrategyMapper">
 
+    <select id="selectIdAll" resultType="String">
+        Select id from running_strategy
+    </select>
+
     <select id="isUp" parameterType="String" resultType="Boolean">
         Select is_up from running_strategy where id = #{id}
     </select>
@@ -11,5 +15,12 @@
         UPDATE running_strategy SET is_up = #{isUp} WHERE id = #{id}
     </update>
 
+    <delete id="delete" parameterType="String" >
+        Delete from running_strategy where id = #{id}
+    </delete>
+
+    <delete id="deleteAccountBinding" parameterType="String" >
+        Delete from account_running_strategy where running_strategy_id = #{runningStrategyId}
+    </delete>
 
 </mapper>

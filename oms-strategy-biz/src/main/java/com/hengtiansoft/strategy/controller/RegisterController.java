@@ -263,21 +263,28 @@ public class RegisterController {
                         !strategyEngine.containsStrategy(strategyId)) {
                     Stack<String> rollbackStack = new Stack<>();
                     try {
-                        // 1. 将副本转换为运行中的策略
-                        strategyEngine.initialize(strategyId);
-                        // 2. 将副本转换为运行中的策略
+                        // 1. 将副本转换为策略,加入strategyMap，py4j才能访问到
                         strategyEngine.turnDuplicate2Strategy(strategyId);
                         rollbackStack.push("turnStrategy2Duplicate");
-                        // 3. 修改数据库，将数据库中副本转换为运行中的策略
+                        // 2. 初始化
+                        strategyEngine.initialize(strategyId);
+                        // 3. 注册策略
+                        strategyEngine.registerStrategy(strategyId);
+                        rollbackStack.push("unregisterStrategy");
+                        // 4. 修改数据库，将数据库中副本转换为运行中的策略
                         hostPortService.updateDuplicate2Strategy(strategyId, hostPortUtils.getHostPort());
                         rollbackStack.push("abortStrategy2Duplicate");
-                        // 4. 完成副本转换策略
+                        // 5. 完成副本转换策略
                         return true;
                     } catch (Exception e) {
                         while (!rollbackStack.empty()) {
                             switch (rollbackStack.pop()) {
                                 case "abortStrategy2Duplicate": {
                                     hostPortService.abortStrategy2Duplicate(strategyId, hostPortUtils.getHostPort());
+                                    break;
+                                }
+                                case "unregisterStrategy": {
+                                    strategyEngine.unregisterStrategy(strategyId);
                                     break;
                                 }
                                 case "turnStrategy2Duplicate": {

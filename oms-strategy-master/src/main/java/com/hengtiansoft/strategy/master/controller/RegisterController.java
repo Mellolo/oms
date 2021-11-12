@@ -48,6 +48,8 @@ public class RegisterController {
     @Autowired
     ThreadPoolTaskExecutor poolTaskExecutor;
 
+    private static int DUPLICATE_NUM = 2;
+
     @PostMapping("register")
     public String register(int codeId, String userId, String[] accounts) {
         // 缓存着的服务器列表
@@ -85,7 +87,7 @@ public class RegisterController {
         }
 
         // 并行添加副本
-        int requiredNum = 2;
+        int requiredNum = DUPLICATE_NUM;
         int duplicateNum = 0;
         hostPortCountModels = hostPortService.selectDuplicateHostPortCountByHostPort(cachedServerSet);
         Collections.sort(hostPortCountModels);
@@ -168,6 +170,7 @@ public class RegisterController {
                                     log.error("Error Unregister removeDuplicate: %s", e);
                                 }
                             }
+                            runningStrategyService.deleteRunningStrategy(strategyId);
                             return "Unregister succeed";
                         }
                         finally {
@@ -200,6 +203,21 @@ public class RegisterController {
             } catch (Exception e) {
                 log.error("Error releaseForHeartBeat Thread.sleep");
             }
+        }
+    }
+
+    @DeleteMapping("unregister/all")
+    public void unregisterAll() {
+        List<String> strategyIds = runningStrategyService.selectIdAll();
+        for(String strategyId: strategyIds) {
+            poolTaskExecutor.execute(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            unregister(strategyId);
+                        }
+                    }
+            );
         }
     }
 
