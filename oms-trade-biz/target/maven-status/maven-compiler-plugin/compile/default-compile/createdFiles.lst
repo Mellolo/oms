@@ -1,6 +1,0 @@
-com\hengtiansoft\trade\controller\TestController.class
-com\hengtiansoft\trade\component\ActiveMqConfigBean.class
-com\hengtiansoft\trade\component\TickProducer.class
-com\hengtiansoft\trade\controller\TradeServiceController.class
-com\hengtiansoft\trade\TradeApplication.class
-com\hengtiansoft\trade\feign\StrategyService.class
