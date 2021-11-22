@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/eventbus/eventbus.iml" filepath="$PROJECT_DIR$/eventbus/eventbus.iml" />
       <module fileurl="file://$PROJECT_DIR$/oms.iml" filepath="$PROJECT_DIR$/oms.iml" />
       <module fileurl="file://$PROJECT_DIR$/oms-strategy-biz/omsstrategybiz.iml" filepath="$PROJECT_DIR$/oms-strategy-biz/omsstrategybiz.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oms-strategy-gateway/omsstrategygateway.iml" filepath="$PROJECT_DIR$/oms-strategy-gateway/omsstrategygateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/oms-strategy-master/omsstrategymaster.iml" filepath="$PROJECT_DIR$/oms-strategy-master/omsstrategymaster.iml" />
       <module fileurl="file://$PROJECT_DIR$/oms-trade-biz/omstradebiz.iml" filepath="$PROJECT_DIR$/oms-trade-biz/omstradebiz.iml" />
     </modules>

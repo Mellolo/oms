@@ -36,7 +36,7 @@ eureka:
       defaultZone: http://127.0.0.1:12345/eureka/
 
 py4j:
-  port: 25333
+  port: 25335
   pythonPort: 25334
   # defaultAddress: 192.168.112.1
 

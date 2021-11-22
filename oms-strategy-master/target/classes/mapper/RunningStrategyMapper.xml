@@ -3,6 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hengtiansoft.strategy.master.mapper.RunningStrategyMapper">
 
+    <select id="selectIdAll" resultType="String">
+        Select id from running_strategy
+    </select>
+
     <select id="isUp" parameterType="String" resultType="Boolean">
         Select is_up from running_strategy where id = #{id}
     </select>

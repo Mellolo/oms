@@ -11,7 +11,6 @@
         <module name="eurekaserver" />
         <module name="eventbus" />
         <module name="omsstrategybiz" />
-        <module name="omsstrategygateway" />
         <module name="omsstrategymaster" />
         <module name="omstradebiz" />
       </profile>
@@ -33,7 +32,7 @@
       <module name="codetest" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
       <module name="eventbus" options="-parameters" />
-      <module name="oms" options="-parameters" />
+      <module name="oms" options="" />
       <module name="omsstrategybiz" options="-parameters" />
       <module name="omsstrategygateway" options="-parameters" />
       <module name="omsstrategyloadbalance" options="-parameters" />

@@ -59,7 +59,7 @@ abstract class ExecutorPool
 
         private int getExecutorPoolNumForSubscriberNotCached(Subscriber subscriber)
         {
-            // TODO: 2021/4/27/027  改成更平均的方式
+            // TODO: 改成更平均的方式
             return (int)(Math.random()*this.executorPoolNum);
         }
 
@@ -99,7 +99,6 @@ abstract class ExecutorPool
                 t.setDaemon(false);
             if (t.getPriority() != priority)
                 t.setPriority(priority);
-            // TODO: 2021/4/27/027 异常处理还需要改改
             t.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
                 public void uncaughtException(Thread t, Throwable e) {
                     e.printStackTrace();
